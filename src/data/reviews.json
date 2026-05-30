@@ -1,0 +1,134 @@
+[
+  {
+    "id": "r001",
+    "productSlug": "classic-peanut-butter-smooth",
+    "customerName": "Rumana Akter",
+    "location": "Dhaka",
+    "rating": 5,
+    "date": "2026-05-15",
+    "body": "আমার বাচ্চা প্রতিদিন স্কুলে নিয়ে যায়। এতো সহজে পুষ্টিকর কিছু পাইনি আগে। লেবেল দেখে কিনেছিলাম, সত্যিই কোনো পাম অয়েল নেই।",
+    "verified": true,
+    "helpful": 124
+  },
+  {
+    "id": "r002",
+    "productSlug": "classic-peanut-butter-smooth",
+    "customerName": "Tanvir Rahman",
+    "location": "Chittagong",
+    "rating": 5,
+    "date": "2026-05-10",
+    "body": "I've tried imported peanut butters that cost 3x this price. MINDFUEL Classic is honestly just as good if not better. No palm oil is a dealbreaker for me — this is the only one I found in BD without it.",
+    "verified": true,
+    "helpful": 87
+  },
+  {
+    "id": "r003",
+    "productSlug": "classic-peanut-butter-smooth",
+    "customerName": "Nusrat Jahan",
+    "location": "Sylhet",
+    "rating": 4,
+    "date": "2026-04-28",
+    "body": "Very good quality. My husband is diabetic and he can finally have peanut butter without worrying. The no added sugar claim is real — we checked the nutrition label.",
+    "verified": true,
+    "helpful": 56
+  },
+  {
+    "id": "r004",
+    "productSlug": "classic-peanut-butter-smooth",
+    "customerName": "Mehedi Hassan",
+    "location": "Rajshahi",
+    "rating": 5,
+    "date": "2026-04-20",
+    "body": "Ordered 6-pack. Best decision. Fast delivery to Rajshahi, packaging was excellent. Tastes exactly how peanut butter should taste — just peanuts. Nothing fake.",
+    "verified": true,
+    "helpful": 43
+  },
+  {
+    "id": "r005",
+    "productSlug": "chocolate-peanut-butter",
+    "customerName": "Sadia Islam",
+    "location": "Dhaka",
+    "rating": 5,
+    "date": "2026-05-18",
+    "body": "এই চকলেট পিনাট বাটার আসলেই অসাধারণ। আমি অনেক brand try করেছি কিন্তু এটাই সেরা। বাচ্চারা পাগল হয়ে যায়। কোনো artificial taste নেই।",
+    "verified": true,
+    "helpful": 211
+  },
+  {
+    "id": "r006",
+    "productSlug": "chocolate-peanut-butter",
+    "customerName": "Rifat Ahmed",
+    "location": "Dhaka",
+    "rating": 5,
+    "date": "2026-05-12",
+    "body": "Bought this as a 'healthy' option and honestly it doesn't feel like a compromise at all. It tastes indulgent. The chocolate flavour is real — not artificial at all.",
+    "verified": true,
+    "helpful": 156
+  },
+  {
+    "id": "r007",
+    "productSlug": "seedra",
+    "customerName": "Dr. Farida Khanam",
+    "location": "Dhaka",
+    "rating": 5,
+    "date": "2026-05-20",
+    "body": "As a nutritionist I recommend this to my patients with IBS. Psyllium-based fiber supplements from abroad cost 5x more. This formulation is equivalent and it's made here. The mango flavour is pleasant too.",
+    "verified": true,
+    "helpful": 328
+  },
+  {
+    "id": "r008",
+    "productSlug": "seedra",
+    "customerName": "Shirin Akter",
+    "location": "Cumilla",
+    "rating": 5,
+    "date": "2026-05-14",
+    "body": "সিড্‌রা খেয়ে ৩ দিনেই পার্থক্য বুঝলাম। আগে অনেক সমস্যা ছিল, এখন অনেক ভালো লাগছে। লেমন ফ্লেভার খুব সুন্দর, কোনো অদ্ভুত গন্ধ নেই।",
+    "verified": true,
+    "helpful": 189
+  },
+  {
+    "id": "r009",
+    "productSlug": "seedra",
+    "customerName": "Sabbir Hossain",
+    "location": "Khulna",
+    "rating": 4,
+    "date": "2026-05-05",
+    "body": "Works as advertised. Mix it fast and drink immediately — that's the key. I tried the original first (unflavoured) and it's completely tasteless which is what I wanted. Good product.",
+    "verified": true,
+    "helpful": 76
+  },
+  {
+    "id": "r010",
+    "productSlug": "granola-honey-nut",
+    "customerName": "Fatema Begum",
+    "location": "Dhaka",
+    "rating": 5,
+    "date": "2026-05-08",
+    "body": "এই granola দিয়ে সকালের নাস্তা করি। সত্যিকারের মধু দিয়ে তৈরি বোঝা যায়। অন্য brands-এর মতো over-sweet না। খুব naturally মিষ্টি।",
+    "verified": true,
+    "helpful": 94
+  },
+  {
+    "id": "r011",
+    "productSlug": "spicy-nut-mix",
+    "customerName": "Arif Billah",
+    "location": "Dhaka",
+    "rating": 5,
+    "date": "2026-05-22",
+    "body": "This is addictive. The spice blend tastes authentically Bangladeshi — not some generic 'spicy' flavour. Cashews are premium quality. I bought 3 bags.",
+    "verified": true,
+    "helpful": 143
+  },
+  {
+    "id": "r012",
+    "productSlug": "mixed-nuts",
+    "customerName": "Nazma Khatun",
+    "location": "Sylhet",
+    "rating": 5,
+    "date": "2026-05-01",
+    "body": "আমার ছেলে gym করে। এই nuts তাকে দিই snack হিসেবে। কোনো oil coating নেই, salt কম, সব বাদাম সমান mast। দাম একটু বেশি হলেও quality অনুযায়ী ঠিক আছে।",
+    "verified": true,
+    "helpful": 67
+  }
+]
