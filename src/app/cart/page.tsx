@@ -106,9 +106,9 @@ export default function CartPage() {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8 min-w-0">
             {/* Items */}
-            <div className="lg:col-span-2 flex flex-col gap-3">
+            <div className="lg:col-span-2 flex flex-col gap-3 min-w-0">
               {items.map((item) => (
                 <div
                   key={item.variantSku}
@@ -165,7 +165,7 @@ export default function CartPage() {
 
               {/* Cross-sell */}
               {crossSell.length > 0 && (
-                <div className="mt-6">
+                <div className="mt-6 min-w-0">
                   <p className="text-label mb-3" style={{ color: 'var(--mf-orange)' }}>Complete your stack</p>
                   <div className="horizontal-scroll">
                     {crossSell.map((p) => {
