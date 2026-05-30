@@ -13,11 +13,10 @@ interface Props {
 
 export default function ReviewsSection({ productSlug, rating, reviewCount }: Props) {
   const allReviews = (reviewsData as Review[]).filter((r) => r.productSlug === productSlug);
-  const [filter, setFilter] = useState<'all' | 'photos' | 'verified' | 'helpful'>('all');
+  const [filter, setFilter] = useState<'all' | 'verified' | 'helpful'>('all');
   const [shown, setShown] = useState(3);
 
   const filtered = allReviews.filter((r) => {
-    if (filter === 'photos') return !!r.photo;
     if (filter === 'verified') return r.verified;
     if (filter === 'helpful') return r.helpful > 50;
     return true;
@@ -83,18 +82,18 @@ export default function ReviewsSection({ productSlug, rating, reviewCount }: Pro
           <div className="lg:col-span-2">
             {/* Filter chips */}
             <div className="flex flex-wrap gap-2 mb-6">
-              {(['all', 'verified', 'photos', 'helpful'] as const).map((f) => (
+              {(['all', 'verified', 'helpful'] as const).map((f) => (
                 <button
                   key={f}
                   onClick={() => { setFilter(f); setShown(3); }}
-                  className="px-4 py-1.5 rounded-full text-sm font-semibold border transition-all capitalize"
+                  className="px-4 py-1.5 rounded-full text-sm font-semibold border transition-all cursor-pointer"
                   style={{
                     borderColor: filter === f ? 'var(--mf-cobalt)' : 'var(--mf-mist)',
                     backgroundColor: filter === f ? 'var(--mf-cobalt)' : 'transparent',
                     color: filter === f ? 'white' : 'var(--mf-graphite)',
                   }}
                 >
-                  {f === 'all' ? 'All Reviews' : f === 'photos' ? 'With Photos' : f === 'verified' ? 'Verified' : 'Most Helpful'}
+                  {f === 'all' ? 'All Reviews' : f === 'verified' ? 'Verified' : 'Most Helpful'}
                 </button>
               ))}
             </div>

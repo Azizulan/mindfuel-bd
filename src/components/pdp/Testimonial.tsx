@@ -28,7 +28,13 @@ export default function Testimonial({ productSlug }: Props) {
             ))}
           </div>
           <blockquote
-            className="text-xl md:text-2xl font-medium leading-relaxed text-white mb-6"
+            className="font-serif-display text-white mb-6"
+            style={{
+              fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+              lineHeight: 1.35,
+              fontStyle: 'italic',
+              fontWeight: 500,
+            }}
           >
             &ldquo;{hero.body}&rdquo;
           </blockquote>

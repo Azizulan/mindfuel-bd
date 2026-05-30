@@ -1,4 +1,5 @@
 import SiteLayout from '@/components/layout/SiteLayout';
+import { Brain, Factory } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -16,7 +17,10 @@ export default function OurStoryPage() {
       >
         <div className="container-mf max-w-3xl">
           <span className="text-label" style={{ color: 'var(--mf-mint)' }}>OUR STORY</span>
-          <h1 className="text-display-l text-white mt-4 mb-6">
+          <h1
+            className="font-serif-display text-white mt-4 mb-6"
+            style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', lineHeight: 1.1, fontWeight: 500 }}
+          >
             Why I started MINDFUEL — and why it took me longer than I expected.
           </h1>
           <p className="text-lg" style={{ color: 'var(--mf-mint-soft)', opacity: 0.8 }}>
@@ -32,10 +36,10 @@ export default function OurStoryPage() {
             {/* Fragment 1 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div
-                className="aspect-square rounded-2xl flex items-center justify-center text-6xl"
-                style={{ backgroundColor: 'var(--mf-cream)' }}
+                className="aspect-square rounded-2xl flex items-center justify-center"
+                style={{ backgroundColor: 'var(--mf-cream)', color: 'var(--mf-cobalt)' }}
               >
-                🧠
+                <Brain size={80} strokeWidth={1.25} />
               </div>
               <div>
                 <span className="text-label text-xs" style={{ color: 'var(--mf-cobalt)' }}>THE QUESTION</span>
@@ -50,8 +54,15 @@ export default function OurStoryPage() {
 
             {/* Pull quote */}
             <blockquote
-              className="border-l-4 pl-6 py-4 text-xl font-medium"
-              style={{ borderColor: 'var(--mf-amber)', color: 'var(--mf-ink)' }}
+              className="font-serif-display border-l-4 pl-6 py-4"
+              style={{
+                borderColor: 'var(--mf-amber)',
+                color: 'var(--mf-ink)',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+                fontStyle: 'italic',
+                fontWeight: 500,
+                lineHeight: 1.3,
+              }}
             >
               &ldquo;Bangladesh doesn&apos;t need to import healthy food. We just needed someone to actually make it — properly, transparently, here.&rdquo;
             </blockquote>
@@ -85,10 +96,10 @@ export default function OurStoryPage() {
                 </p>
               </div>
               <div
-                className="aspect-square rounded-2xl flex items-center justify-center text-6xl"
-                style={{ backgroundColor: 'var(--mf-mint-soft)' }}
+                className="aspect-square rounded-2xl flex items-center justify-center"
+                style={{ backgroundColor: 'var(--mf-mint-soft)', color: '#0F766E' }}
               >
-                🏭
+                <Factory size={80} strokeWidth={1.25} />
               </div>
             </div>
 

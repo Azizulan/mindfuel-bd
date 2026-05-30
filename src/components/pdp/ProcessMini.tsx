@@ -1,10 +1,12 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sprout, Factory, PackageCheck, type LucideIcon } from 'lucide-react';
 
-const steps = [
-  { emoji: '🌱', label: 'Source', desc: 'Traceable Bangladeshi ingredients' },
-  { emoji: '🏭', label: 'Process', desc: 'Our own facility, no outsourcing' },
-  { emoji: '📦', label: 'Pack & Test', desc: 'BCSIR certified before it ships' },
+type Step = { Icon: LucideIcon; label: string; desc: string };
+
+const steps: Step[] = [
+  { Icon: Sprout, label: 'Source', desc: 'Traceable Bangladeshi ingredients' },
+  { Icon: Factory, label: 'Process', desc: 'Our own facility, no outsourcing' },
+  { Icon: PackageCheck, label: 'Pack & Test', desc: 'BCSIR certified before it ships' },
 ];
 
 export default function ProcessMini() {
@@ -19,29 +21,23 @@ export default function ProcessMini() {
             </h2>
             <Link
               href="/our-process"
-              className="inline-flex items-center gap-2 mt-4 font-semibold text-sm"
+              className="inline-flex items-center gap-2 mt-4 font-semibold text-sm hover:gap-3 transition-all"
               style={{ color: 'var(--mf-cobalt)' }}
             >
               See the full factory story <ArrowRight size={16} />
             </Link>
           </div>
-          <div className="flex items-center gap-4 md:gap-8">
+          <div className="flex items-center gap-4 md:gap-6">
             {steps.map((step, i) => (
-              <div key={i} className="flex flex-col items-center text-center gap-2">
+              <div key={i} className="flex flex-col items-center text-center gap-2 max-w-[100px]">
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl"
-                  style={{ backgroundColor: 'var(--mf-mint-soft)' }}
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--mf-mint-soft)', color: '#0F766E' }}
                 >
-                  {step.emoji}
+                  <step.Icon size={28} strokeWidth={1.75} />
                 </div>
                 <p className="font-bold text-sm" style={{ color: 'var(--mf-ink)' }}>{step.label}</p>
-                <p className="text-xs max-w-[90px]" style={{ color: 'var(--mf-graphite)' }}>{step.desc}</p>
-                {i < steps.length - 1 && (
-                  <div
-                    className="hidden md:block absolute"
-                    style={{ width: 32, height: 2, backgroundColor: 'var(--mf-mist)' }}
-                  />
-                )}
+                <p className="text-xs leading-tight" style={{ color: 'var(--mf-graphite)' }}>{step.desc}</p>
               </div>
             ))}
           </div>

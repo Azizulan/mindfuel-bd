@@ -1,11 +1,8 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sun } from 'lucide-react';
 import { currentSeason } from '@/data/seasonal';
-import { getProductBySlug } from '@/data/products';
 
 export default function SeasonalBand() {
-  const product = getProductBySlug(currentSeason.heroProductSlug);
-
   return (
     <section
       className="py-8"
@@ -14,11 +11,14 @@ export default function SeasonalBand() {
       <div className="container-mf">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
-            <span className="text-label text-xs" style={{ color: currentSeason.heroBandText, opacity: 0.6 }}>
-              SUMMER 2026 HERO
-            </span>
+            <div className="flex items-center gap-2 justify-center sm:justify-start">
+              <Sun size={14} style={{ color: currentSeason.heroBandText, opacity: 0.7 }} />
+              <span className="text-label text-xs" style={{ color: currentSeason.heroBandText, opacity: 0.7 }}>
+                SUMMER 2026 HERO
+              </span>
+            </div>
             <p className="text-base font-semibold mt-1 max-w-xl" style={{ color: currentSeason.heroBandText }}>
-              ☀️ {currentSeason.heroBandCopy.en}
+              {currentSeason.heroBandCopy.en}
             </p>
             <p className="font-bn text-sm mt-0.5" style={{ color: currentSeason.heroBandText, opacity: 0.75 }}>
               {currentSeason.heroBandCopy.bn}

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Manrope, Hind_Siliguri } from 'next/font/google';
+import { Manrope, Hind_Siliguri, Fraunces } from 'next/font/google';
 import './globals.css';
 
 const manrope = Manrope({
@@ -14,6 +14,13 @@ const hindSiliguri = Hind_Siliguri({
   variable: '--font-hind-siliguri',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  axes: ['SOFT', 'opsz'],
 });
 
 export const metadata: Metadata = {
@@ -53,7 +60,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${hindSiliguri.variable}`}
+      className={`${manrope.variable} ${hindSiliguri.variable} ${fraunces.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-white text-mf-ink antialiased">
         {children}

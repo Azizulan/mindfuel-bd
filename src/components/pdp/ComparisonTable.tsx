@@ -1,4 +1,4 @@
-import { Check, X } from 'lucide-react';
+import { Check, X, AlertTriangle } from 'lucide-react';
 import type { Product } from '@/types';
 
 interface Props {
@@ -25,7 +25,7 @@ const competitors = [
     pricePerGram: '৳3.50/g',
   },
   {
-    name: 'Cheap Online Brands',
+    name: 'Cheap Online Brand',
     protein: '15g/100g',
     addedSugar: true,
     palmOil: true,
@@ -43,8 +43,6 @@ const rows = [
   { key: 'labTested', label: 'Lab Tested', isBoolean: true },
   { key: 'pricePerGram', label: 'Price per gram', isBoolean: false },
 ] as const;
-
-type RowKey = typeof rows[number]['key'];
 
 interface CompRow {
   protein: string;
@@ -70,46 +68,61 @@ export default function ComparisonTable({ product }: Props) {
     <section
       id="comparison"
       className="section-py"
-      style={{ backgroundColor: 'var(--mf-cobalt-deep)' }}
+      style={{ backgroundColor: 'var(--mf-cream)' }}
     >
       <div className="container-mf">
-        <div className="text-center mb-10">
-          <span className="text-label" style={{ color: 'var(--mf-mint)' }}>THE REAL VS FAKE COMPARISON</span>
-          <h2 className="text-h2 mt-2 text-white">
+        <div className="text-center mb-10 max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-4"
+            style={{ backgroundColor: 'var(--mf-amber-soft)' }}>
+            <AlertTriangle size={14} style={{ color: '#92400E' }} />
+            <span className="text-xs font-bold tracking-wide" style={{ color: '#92400E' }}>
+              THE REAL VS FAKE COMPARISON
+            </span>
+          </div>
+          <h2 className="text-h2 font-serif-display" style={{ color: 'var(--mf-ink)', fontWeight: 600 }}>
             Most local brands won&apos;t show you this table.
           </h2>
-          <p className="mt-3 text-base" style={{ color: 'var(--mf-mint-soft)', opacity: 0.8 }}>
+          <p className="mt-3 text-base" style={{ color: 'var(--mf-graphite)' }}>
             We will. Because real food has nothing to hide.
           </p>
         </div>
 
-        {/* Table — horizontal scroll on mobile */}
-        <div className="overflow-x-auto -mx-5 px-5">
-          <table className="w-full min-w-[600px]" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+        {/* Table */}
+        <div
+          className="overflow-x-auto -mx-5 px-5 lg:mx-0 lg:px-0 rounded-2xl bg-white"
+          style={{ boxShadow: '0 4px 16px rgba(15,23,42,0.06)', border: '1px solid var(--mf-mist)' }}
+        >
+          <table className="w-full min-w-[640px]" style={{ borderCollapse: 'collapse' }}>
             <thead>
-              <tr>
-                <th className="py-4 px-4 text-left text-sm font-semibold" style={{ color: 'var(--mf-mint-soft)', opacity: 0.6, width: '30%' }}>
+              <tr style={{ borderBottom: '2px solid var(--mf-mist)' }}>
+                <th className="py-5 px-5 text-left text-sm font-semibold" style={{ color: 'var(--mf-graphite)', width: '32%' }}>
                   What you&apos;re comparing
                 </th>
                 <th
-                  className="py-4 px-4 text-center text-sm font-bold rounded-t-xl"
-                  style={{ backgroundColor: 'var(--mf-cobalt)', color: 'white' }}
+                  className="py-5 px-5 text-center relative"
+                  style={{
+                    backgroundColor: 'var(--mf-cobalt)',
+                    color: 'white',
+                    borderLeft: '4px solid var(--mf-amber)',
+                  }}
                 >
-                  <div className="flex flex-col items-center gap-1">
+                  <div className="flex flex-col items-center gap-1.5">
                     <span
-                      className="px-2 py-0.5 rounded-full text-xs font-bold"
+                      className="px-2.5 py-0.5 rounded-full text-xs font-extrabold"
                       style={{ backgroundColor: 'var(--mf-amber)', color: 'var(--mf-cobalt-deep)' }}
                     >
                       MINDFUEL
                     </span>
-                    {product.name.en}
+                    <span className="text-xs font-medium leading-tight" style={{ color: 'var(--mf-mint-soft)' }}>
+                      {product.name.en}
+                    </span>
                   </div>
                 </th>
                 {competitors.map((c) => (
                   <th
                     key={c.name}
-                    className="py-4 px-4 text-center text-sm font-medium"
-                    style={{ color: 'var(--mf-mint-soft)', opacity: 0.6 }}
+                    className="py-5 px-4 text-center text-xs font-medium"
+                    style={{ color: 'var(--mf-graphite)' }}
                   >
                     {c.name}
                   </th>
@@ -118,36 +131,33 @@ export default function ComparisonTable({ product }: Props) {
             </thead>
             <tbody>
               {rows.map((row, ri) => (
-                <tr key={row.key}>
-                  <td
-                    className="py-4 px-4 text-sm font-medium"
-                    style={{
-                      color: 'var(--mf-mint-soft)',
-                      borderTop: ri === 0 ? 'none' : '1px solid rgba(255,255,255,0.08)',
-                    }}
-                  >
+                <tr
+                  key={row.key}
+                  style={{
+                    backgroundColor: ri % 2 === 0 ? 'white' : 'var(--mf-cream)',
+                  }}
+                >
+                  <td className="py-4 px-5 text-sm font-medium" style={{ color: 'var(--mf-ink)' }}>
                     {row.label}
                   </td>
-                  {/* MINDFUEL */}
+                  {/* MINDFUEL — highlighted column */}
                   <td
-                    className="py-4 px-4 text-center"
+                    className="py-4 px-5 text-center"
                     style={{
-                      backgroundColor: 'rgba(30,58,138,0.5)',
-                      borderTop: ri === 0 ? 'none' : '1px solid rgba(255,255,255,0.08)',
+                      backgroundColor: 'rgba(94,234,212,0.12)',
+                      borderLeft: '4px solid var(--mf-amber)',
                     }}
                   >
                     {row.isBoolean ? (
                       mindfuel[row.key] === true ? (
-                        <Check
-                          size={20}
-                          className="mx-auto"
-                          style={{ color: 'var(--mf-mint)' }}
-                        />
+                        <Check size={20} className="mx-auto" style={{ color: 'var(--mf-success)' }} strokeWidth={3} />
                       ) : (
-                        <X size={20} className="mx-auto" style={{ color: 'var(--mf-danger)' }} />
+                        <X size={20} className="mx-auto" style={{ color: 'var(--mf-danger)' }} strokeWidth={3} />
                       )
                     ) : (
-                      <span className="text-sm font-bold text-white">{mindfuel[row.key] as string}</span>
+                      <span className="text-sm font-extrabold" style={{ color: 'var(--mf-cobalt)' }}>
+                        {mindfuel[row.key] as string}
+                      </span>
                     )}
                   </td>
                   {/* Competitors */}
@@ -159,19 +169,15 @@ export default function ComparisonTable({ product }: Props) {
                         : val
                       : null;
                     return (
-                      <td
-                        key={c.name}
-                        className="py-4 px-4 text-center"
-                        style={{ borderTop: ri === 0 ? 'none' : '1px solid rgba(255,255,255,0.06)' }}
-                      >
+                      <td key={c.name} className="py-4 px-4 text-center">
                         {row.isBoolean ? (
                           displayVal === true ? (
-                            <Check size={20} className="mx-auto" style={{ color: 'var(--mf-success)', opacity: 0.7 }} />
+                            <Check size={18} className="mx-auto" style={{ color: 'var(--mf-success)', opacity: 0.7 }} />
                           ) : (
-                            <X size={20} className="mx-auto" style={{ color: 'var(--mf-danger)', opacity: 0.8 }} />
+                            <X size={18} className="mx-auto" style={{ color: 'var(--mf-danger)', opacity: 0.7 }} />
                           )
                         ) : (
-                          <span className="text-sm font-medium" style={{ color: 'var(--mf-mint-soft)', opacity: 0.7 }}>
+                          <span className="text-sm font-medium" style={{ color: 'var(--mf-graphite)' }}>
                             {val as string}
                           </span>
                         )}
@@ -187,8 +193,8 @@ export default function ComparisonTable({ product }: Props) {
         <div className="mt-8 text-center">
           <a
             href="/real-vs-fake"
-            className="inline-flex items-center gap-2 text-sm font-semibold underline"
-            style={{ color: 'var(--mf-mint)' }}
+            className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all"
+            style={{ color: 'var(--mf-cobalt)' }}
           >
             See what&apos;s really in your peanut butter — full comparison →
           </a>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sunrise, Cookie, Users, Gift, Check, MessageCircle, type LucideIcon } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
 import { formatPrice } from '@/lib/utils';
 import type { Metadata } from 'next';
@@ -9,11 +9,26 @@ export const metadata: Metadata = {
   description: 'Curated MINDFUEL bundles for every occasion — Breakfast Box, Snack Stack, Family Box, Gift Box. Save up to 25% vs buying individually.',
 };
 
-const bundles = [
+type Bundle = {
+  id: string;
+  name: string;
+  Icon: LucideIcon;
+  desc: string;
+  products: string[];
+  originalPrice: number;
+  bundlePrice: number;
+  saving: number;
+  savingPct: number;
+  bg: string;
+  color: string;
+  tag: string | null;
+};
+
+const bundles: Bundle[] = [
   {
     id: 'breakfast-box',
     name: 'The Breakfast Box',
-    emoji: '🌅',
+    Icon: Sunrise,
     desc: 'Everything you need for a real-food Bangladeshi morning. Granola or muesli + classic peanut butter + Seedra fiber drink.',
     products: ['Honey Nut Granola (350g)', 'Classic PB Smooth (400g)', 'Seedra Original (300g)'],
     originalPrice: 1590,
@@ -27,7 +42,7 @@ const bundles = [
   {
     id: 'snack-stack',
     name: 'The Snack Stack',
-    emoji: '🍿',
+    Icon: Cookie,
     desc: 'Real snacks for real people. Mixed nuts + spicy nut mix + seed mix. No junk. Just clean crunch.',
     products: ['Mixed Nuts Premium (150g)', 'Spicy Nut Mix (150g)', 'Seed Mix (250g)'],
     originalPrice: 980,
@@ -41,7 +56,7 @@ const bundles = [
   {
     id: 'family-box',
     name: 'The Family Box',
-    emoji: '👨‍👩‍👧‍👦',
+    Icon: Users,
     desc: 'One box for the whole family. Peanut butters for the kids, Seedra for the adults, granola for everyone.',
     products: ['Classic PB Smooth (400g)', 'Chocolate PB (200g)', 'Honey Nut Granola (350g)', 'Seedra Lemon (300g)'],
     originalPrice: 2180,
@@ -55,7 +70,7 @@ const bundles = [
   {
     id: 'gift-box',
     name: 'The Gift Box',
-    emoji: '🎁',
+    Icon: Gift,
     desc: 'Premium gift set — all five MINDFUEL products in beautiful packaging. Perfect for Eid, birthdays, or corporate gifting.',
     products: ['Classic PB Smooth (200g)', 'Chocolate PB (200g)', 'Honey Nut Granola (350g)', 'Spicy Nut Mix (150g)', 'Seedra Original (300g)'],
     originalPrice: 2000,
@@ -94,7 +109,12 @@ export default function BundlesPage() {
               >
                 <div className="p-8 flex-1">
                   <div className="flex items-start justify-between mb-4">
-                    <span className="text-5xl">{bundle.emoji}</span>
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                      style={{ backgroundColor: 'white', color: bundle.color }}
+                    >
+                      <bundle.Icon size={32} strokeWidth={1.75} />
+                    </div>
                     {bundle.tag && (
                       <span
                         className="badge badge-amber text-xs shrink-0"
@@ -111,7 +131,7 @@ export default function BundlesPage() {
                   <ul className="flex flex-col gap-1.5 mb-6">
                     {bundle.products.map((p) => (
                       <li key={p} className="flex items-center gap-2 text-sm" style={{ color: bundle.color }}>
-                        <span>✓</span>
+                        <Check size={14} strokeWidth={3} style={{ color: bundle.color, opacity: 0.7 }} />
                         <span>{p}</span>
                       </li>
                     ))}
@@ -127,12 +147,15 @@ export default function BundlesPage() {
                   </div>
                 </div>
                 <div className="px-8 pb-8">
-                  <Link
-                    href={`/products/${bundle.id}`}
-                    className="btn-primary w-full justify-center text-sm py-3"
+                  <a
+                    href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '8801XXXXXXXXX'}?text=${encodeURIComponent(`Hello MINDFUEL! I'd like to order ${bundle.name} (৳${bundle.bundlePrice}).`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary w-full justify-center text-sm py-3 flex items-center gap-2"
                   >
-                    Order via WhatsApp <ArrowRight size={15} />
-                  </Link>
+                    <MessageCircle size={15} />
+                    Order on WhatsApp <ArrowRight size={15} />
+                  </a>
                 </div>
               </div>
             ))}

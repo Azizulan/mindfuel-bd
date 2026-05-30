@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { Trash2, Plus, Minus, ShoppingBag, MessageCircle } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, MessageCircle, ArrowRight } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
 import { useCart } from '@/store/cart';
 import { formatPrice, buildWhatsAppMessage } from '@/lib/utils';
+import ProductImage from '@/components/ui/ProductImage';
+import { getProductBySlug } from '@/data/products';
 
 export default function CartPage() {
   const { items, removeItem, updateQty, total, itemCount } = useCart();
@@ -26,15 +27,55 @@ export default function CartPage() {
   const remainingForFreeDelivery = Math.max(0, freeDeliveryThreshold - cartTotal);
 
   if (items.length === 0) {
+    const bestseller = getProductBySlug('classic-peanut-butter-smooth');
     return (
       <SiteLayout>
-        <div className="section-py flex flex-col items-center justify-center min-h-96">
-          <ShoppingBag size={48} style={{ color: 'var(--mf-mist)' }} className="mb-4" />
-          <h2 className="text-h2 mb-2">Your stack is empty.</h2>
-          <p className="text-base mb-6" style={{ color: 'var(--mf-graphite)' }}>
-            Let&apos;s build it with real food.
-          </p>
-          <Link href="/shop" className="btn-primary">Browse Products →</Link>
+        <div className="section-py">
+          <div className="container-mf max-w-3xl text-center">
+            <div
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-5"
+              style={{ backgroundColor: 'var(--mf-mint-soft)', color: '#0F766E' }}
+            >
+              <ShoppingBag size={28} strokeWidth={1.75} />
+            </div>
+            <h2 className="text-h2 mb-2">Your stack is empty.</h2>
+            <p className="text-base mb-8 max-w-md mx-auto" style={{ color: 'var(--mf-graphite)' }}>
+              Let&apos;s build it with real food — start with our bestseller.
+            </p>
+
+            {bestseller && (
+              <Link
+                href={`/products/${bestseller.slug}`}
+                className="group inline-flex items-center gap-4 p-4 pr-6 rounded-2xl border transition-all hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+                style={{ borderColor: 'var(--mf-mist)', backgroundColor: 'white' }}
+              >
+                <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0" style={{ backgroundColor: 'var(--mf-cream)' }}>
+                  <ProductImage
+                    src={bestseller.heroImage}
+                    alt={bestseller.name.en}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                    fallbackText="MF"
+                  />
+                </div>
+                <div className="text-left">
+                  <span className="badge badge-amber text-xs mb-1">Bestseller</span>
+                  <p className="font-bold text-base" style={{ color: 'var(--mf-ink)' }}>{bestseller.name.en}</p>
+                  <p className="text-sm" style={{ color: 'var(--mf-cobalt)' }}>
+                    From {formatPrice([...bestseller.variants].sort((a, b) => a.price - b.price)[0].price)}
+                  </p>
+                </div>
+                <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" style={{ color: 'var(--mf-cobalt)' }} />
+              </Link>
+            )}
+
+            <div className="mt-6">
+              <Link href="/shop" className="text-sm font-semibold underline" style={{ color: 'var(--mf-cobalt)' }}>
+                Or browse all products →
+              </Link>
+            </div>
+          </div>
         </div>
       </SiteLayout>
     );
@@ -78,14 +119,13 @@ export default function CartPage() {
                 >
                   {/* Image */}
                   <div className="shrink-0 w-20 h-20 rounded-xl overflow-hidden relative" style={{ backgroundColor: 'var(--mf-mist)' }}>
-                    <Image
+                    <ProductImage
                       src={item.image}
                       alt={item.name}
                       fill
                       className="object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://placehold.co/80x80/E2E8F0/334155?text=MF`;
-                      }}
+                      sizes="80px"
+                      fallbackText="MF"
                     />
                   </div>
 

@@ -131,10 +131,18 @@ export default function ProductHero({ product }: Props) {
 
             {/* Product name */}
             <div>
-              <h1 className="text-display-xl" style={{ color: 'var(--mf-ink)' }}>
+              <h1
+                className="font-serif-display"
+                style={{
+                  color: 'var(--mf-ink)',
+                  fontSize: 'clamp(2.25rem, 4.5vw, 3.75rem)',
+                  lineHeight: 1.05,
+                  fontWeight: 600,
+                }}
+              >
                 {product.name.en}
               </h1>
-              <p className="font-bn text-lg mt-1" style={{ color: 'var(--mf-graphite)' }}>
+              <p className="font-bn text-lg mt-2" style={{ color: 'var(--mf-graphite)' }}>
                 {product.name.bn}
               </p>
             </div>
@@ -151,8 +159,10 @@ export default function ProductHero({ product }: Props) {
                   <Star
                     key={i}
                     size={16}
-                    className={i < Math.floor(product.rating) ? 'fill-current' : 'stroke-current'}
-                    style={{ color: 'var(--mf-amber)' }}
+                    style={{
+                      color: 'var(--mf-amber)',
+                      fill: i < Math.floor(product.rating) ? 'var(--mf-amber)' : 'none',
+                    }}
                   />
                 ))}
               </div>

@@ -46,12 +46,19 @@ export default function Footer() {
             <form
               className="flex flex-col sm:flex-row gap-3"
               onSubmit={(e) => e.preventDefault()}
+              aria-label="Newsletter signup"
             >
+              <label htmlFor="footer-email" className="sr-only">
+                Email address
+              </label>
               <input
+                id="footer-email"
+                name="email"
                 type="email"
+                required
+                autoComplete="email"
                 placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-full text-sm bg-white text-gray-900 outline-none focus:ring-2"
-                style={{ ringColor: 'var(--mf-amber)' } as React.CSSProperties}
+                className="flex-1 px-4 py-3 rounded-full text-sm bg-white text-gray-900"
               />
               <button type="submit" className="btn-primary shrink-0">
                 Get 10% Off →

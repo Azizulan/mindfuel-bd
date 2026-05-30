@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Check, Minus, Plus, RefreshCw } from 'lucide-react';
+import { Check, Minus, Plus, RefreshCw, Gift } from 'lucide-react';
 import type { Product } from '@/types';
 import { freeGifts } from '@/data/free-gifts';
 import { formatPrice } from '@/lib/utils';
@@ -71,12 +71,55 @@ export default function BuildBox({ product }: Props) {
   return (
     <section id="build-box" className="section-py" style={{ backgroundColor: 'var(--mf-cream)' }}>
       <div className="container-mf">
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <span className="text-label" style={{ color: 'var(--mf-cobalt)' }}>BUILD YOUR STACK</span>
           <h2 className="text-h2 mt-2" style={{ color: 'var(--mf-ink)' }}>
             The more you stack, the more you save.
           </h2>
         </div>
+
+        {/* Progress bar */}
+        {(() => {
+          const step1Done = true;
+          const step2Done = !!freeGiftId;
+          const step3Done = totalSelected >= stackSize;
+          const progressPct = (Number(step1Done) + Number(step2Done) + Number(step3Done)) / 3 * 100;
+          return (
+            <div className="max-w-2xl mx-auto mb-10" role="progressbar" aria-valuenow={progressPct} aria-valuemin={0} aria-valuemax={100} aria-label="Build-a-box progress">
+              <div className="flex items-center justify-between mb-2 px-1">
+                {[
+                  { n: 1, label: 'Size', done: step1Done },
+                  { n: 2, label: 'Free gift', done: step2Done },
+                  { n: 3, label: 'Variants', done: step3Done },
+                ].map((s) => (
+                  <div key={s.n} className="flex items-center gap-2">
+                    <span
+                      className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all"
+                      style={{
+                        backgroundColor: s.done ? 'var(--mf-success)' : 'var(--mf-mist)',
+                        color: s.done ? 'white' : 'var(--mf-graphite)',
+                      }}
+                    >
+                      {s.done ? <Check size={14} /> : s.n}
+                    </span>
+                    <span
+                      className="text-xs font-semibold hidden sm:inline"
+                      style={{ color: s.done ? 'var(--mf-ink)' : 'var(--mf-graphite)' }}
+                    >
+                      {s.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--mf-mist)' }}>
+                <div
+                  className="h-full rounded-full transition-all duration-300"
+                  style={{ width: `${progressPct}%`, backgroundColor: 'var(--mf-success)' }}
+                />
+              </div>
+            </div>
+          );
+        })()}
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Steps */}
@@ -85,7 +128,7 @@ export default function BuildBox({ product }: Props) {
             <div className="bg-white rounded-2xl p-6" style={{ boxShadow: '0 4px 16px rgba(15,23,42,0.06)' }}>
               <div className="flex items-center gap-3 mb-5">
                 <span
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                  className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-base font-extrabold text-white shadow-sm"
                   style={{ backgroundColor: 'var(--mf-cobalt)' }}
                 >1</span>
                 <h3 className="text-h3">Choose your stack size</h3>
@@ -156,9 +199,9 @@ export default function BuildBox({ product }: Props) {
             <div className="bg-white rounded-2xl p-6" style={{ boxShadow: '0 4px 16px rgba(15,23,42,0.06)' }}>
               <div className="flex items-center gap-3 mb-5">
                 <span
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                  style={{ backgroundColor: 'var(--mf-cobalt)' }}
-                >2</span>
+                  className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-base font-extrabold text-white shadow-sm"
+                  style={{ backgroundColor: freeGiftId ? 'var(--mf-success)' : 'var(--mf-cobalt)' }}
+                >{freeGiftId ? <Check size={16} /> : 2}</span>
                 <h3 className="text-h3">Pick your free gift</h3>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -190,10 +233,10 @@ export default function BuildBox({ product }: Props) {
                       </div>
                     )}
                     <div
-                      className="w-12 h-12 rounded-lg flex items-center justify-center text-xl"
-                      style={{ backgroundColor: 'var(--mf-mint-soft)' }}
+                      className="w-12 h-12 rounded-lg flex items-center justify-center"
+                      style={{ backgroundColor: 'var(--mf-mint-soft)', color: '#0F766E' }}
                     >
-                      🎁
+                      <Gift size={22} strokeWidth={2} />
                     </div>
                     <span className="text-xs font-medium text-center leading-tight" style={{ color: 'var(--mf-ink)' }}>
                       {gift.label.en}
@@ -208,9 +251,9 @@ export default function BuildBox({ product }: Props) {
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
                   <span
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                    style={{ backgroundColor: 'var(--mf-cobalt)' }}
-                  >3</span>
+                    className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-base font-extrabold text-white shadow-sm"
+                    style={{ backgroundColor: totalSelected >= stackSize ? 'var(--mf-success)' : 'var(--mf-cobalt)' }}
+                  >{totalSelected >= stackSize ? <Check size={16} /> : 3}</span>
                   <h3 className="text-h3">Choose your variants</h3>
                 </div>
                 <span
@@ -308,10 +351,11 @@ export default function BuildBox({ product }: Props) {
 
               {freeGiftId && (
                 <div
-                  className="flex items-center gap-2 p-3 rounded-xl text-sm"
+                  className="flex items-center gap-2 p-3 rounded-xl text-sm font-medium"
                   style={{ backgroundColor: 'var(--mf-mint-soft)', color: '#0F766E' }}
                 >
-                  🎁 Free gift included!
+                  <Gift size={16} />
+                  <span>Free gift included!</span>
                 </div>
               )}
 
