@@ -111,9 +111,13 @@ export default function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-2">
-            <Link href="/shop" className="btn-primary hidden sm:inline-flex text-sm py-2.5 px-5">
-              Start Snacking
-            </Link>
+            {/* Wrapper toggles visibility — .btn-primary forces display:inline-flex,
+                so `hidden` must live on a non-button parent to actually hide it. */}
+            <span className="hidden md:inline-flex">
+              <Link href="/shop" className="btn-primary text-sm py-2.5 px-5">
+                Start Snacking
+              </Link>
+            </span>
 
             {/* Cart box */}
             <Link
