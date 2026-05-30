@@ -31,9 +31,7 @@ export default function Testimonial({ productSlug }: Props) {
             className="font-serif-display text-white mb-6"
             style={{
               fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-              lineHeight: 1.35,
-              fontStyle: 'italic',
-              fontWeight: 500,
+              lineHeight: 1.25,
             }}
           >
             &ldquo;{hero.body}&rdquo;

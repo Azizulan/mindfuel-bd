@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ShoppingCart, Menu, X, ChevronDown } from 'lucide-react';
 import { useCart } from '@/store/cart';
-import { cn } from '@/lib/utils';
 
 const navLinks = [
   { label: 'Shop', href: '/shop', hasChildren: true },
@@ -30,66 +29,69 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 z-40 bg-white border-b"
-      style={{ borderColor: 'var(--mf-mist)' }}
+      className="sticky top-0 z-20"
+      style={{ backgroundColor: 'var(--mf-cream)' }}
     >
       <div className="container-mf">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-[68px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: 'var(--mf-cobalt)' }}
-            >
-              <span className="text-white font-extrabold text-sm leading-none">MF</span>
-            </div>
+          <Link href="/" className="flex items-center gap-1 shrink-0">
             <span
-              className="font-extrabold text-xl tracking-tight hidden sm:block"
-              style={{ color: 'var(--mf-cobalt)' }}
+              className="font-display text-2xl tracking-tight"
+              style={{ color: 'var(--mf-espresso)' }}
             >
               MINDFUEL
             </span>
+            <span
+              className="w-2 h-2 rounded-full mb-1"
+              style={{ backgroundColor: 'var(--mf-yellow)' }}
+            />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) =>
               link.hasChildren ? (
-                <div key={link.href} className="relative group">
+                <div
+                  key={link.href}
+                  className="relative"
+                  onMouseEnter={() => setShopOpen(true)}
+                  onMouseLeave={() => setShopOpen(false)}
+                >
                   <button
-                    className="flex items-center gap-1 px-3 py-2 text-sm font-600 rounded-lg hover:bg-gray-50 transition-colors"
-                    style={{ color: 'var(--mf-ink)' }}
-                    onMouseEnter={() => setShopOpen(true)}
-                    onMouseLeave={() => setShopOpen(false)}
+                    className="flex items-center gap-1 px-3 py-2 text-sm font-bold rounded-full hover:bg-black/5 transition-colors cursor-pointer"
+                    style={{ color: 'var(--mf-espresso)' }}
                   >
                     {link.label}
-                    <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
+                    <ChevronDown size={14} className="transition-transform" style={{ transform: shopOpen ? 'rotate(180deg)' : 'none' }} />
                   </button>
                   {shopOpen && (
                     <div
-                      className="absolute top-full left-0 mt-1 bg-white rounded-xl shadow-lg border py-2 min-w-48 z-50"
-                      style={{ borderColor: 'var(--mf-mist)', boxShadow: '0 8px 24px rgba(15,23,42,0.1)' }}
-                      onMouseEnter={() => setShopOpen(true)}
-                      onMouseLeave={() => setShopOpen(false)}
+                      className="absolute top-full left-0 pt-1 min-w-52 z-30"
                     >
-                      {shopCategories.map((cat) => (
-                        <Link
-                          key={cat.href}
-                          href={cat.href}
-                          className="block px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors"
-                          style={{ color: 'var(--mf-ink)' }}
-                        >
-                          {cat.label}
-                        </Link>
-                      ))}
-                      <div className="border-t mt-1 pt-1" style={{ borderColor: 'var(--mf-mist)' }}>
-                        <Link
-                          href="/shop"
-                          className="block px-4 py-2.5 text-sm font-600 transition-colors"
-                          style={{ color: 'var(--mf-cobalt)' }}
-                        >
-                          All Products →
-                        </Link>
+                      <div
+                        className="bg-white rounded-2xl py-2"
+                        style={{ boxShadow: '0 12px 32px rgba(46,31,21,0.16)', border: '1px solid var(--mf-mist)' }}
+                      >
+                        {shopCategories.map((cat) => (
+                          <Link
+                            key={cat.href}
+                            href={cat.href}
+                            className="block px-4 py-2.5 text-sm font-medium hover:bg-black/5 transition-colors"
+                            style={{ color: 'var(--mf-espresso)' }}
+                          >
+                            {cat.label}
+                          </Link>
+                        ))}
+                        <div className="border-t mt-1 pt-1" style={{ borderColor: 'var(--mf-mist)' }}>
+                          <Link
+                            href="/shop"
+                            className="block px-4 py-2.5 text-sm font-bold"
+                            style={{ color: 'var(--mf-orange)' }}
+                          >
+                            All Products →
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -98,8 +100,8 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-2 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
-                  style={{ color: 'var(--mf-ink)' }}
+                  className="px-3 py-2 text-sm font-bold rounded-full hover:bg-black/5 transition-colors"
+                  style={{ color: 'var(--mf-espresso)' }}
                 >
                   {link.label}
                 </Link>
@@ -109,33 +111,34 @@ export default function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-2">
-            {/* Cart */}
+            <Link href="/shop" className="btn-primary hidden sm:inline-flex text-sm py-2.5 px-5">
+              Start Snacking
+            </Link>
+
+            {/* Cart box */}
             <Link
               href="/cart"
-              className="relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-50 transition-colors"
-              aria-label="Cart"
+              className="relative flex items-center justify-center w-11 h-11 rounded-2xl transition-colors hover:opacity-90"
+              style={{ backgroundColor: 'var(--mf-espresso)' }}
+              aria-label={`Cart, ${itemCount} items`}
             >
-              <ShoppingCart size={20} style={{ color: 'var(--mf-ink)' }} />
+              <ShoppingCart size={18} style={{ color: 'var(--mf-cream)' }} />
               {itemCount > 0 && (
                 <span
-                  className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--mf-amber)' }}
+                  className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full text-xs font-extrabold flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--mf-yellow)', color: 'var(--mf-espresso)' }}
                 >
                   {itemCount > 9 ? '9+' : itemCount}
                 </span>
               )}
             </Link>
 
-            {/* Order CTA */}
-            <Link href="/shop" className="btn-primary hidden sm:inline-flex text-sm py-2 px-4">
-              Shop Now
-            </Link>
-
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-50"
+              className="md:hidden flex items-center justify-center w-11 h-11 rounded-2xl cursor-pointer"
+              style={{ backgroundColor: 'var(--mf-mist)' }}
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Menu"
+              aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -145,29 +148,26 @@ export default function Header() {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div
-          className="md:hidden border-t"
-          style={{ borderColor: 'var(--mf-mist)', backgroundColor: 'var(--mf-cream)' }}
-        >
-          <nav className="container-mf py-4 flex flex-col gap-1">
+        <div className="md:hidden" style={{ backgroundColor: 'var(--mf-cream)' }}>
+          <nav className="container-mf pb-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="py-3 px-2 font-medium text-base border-b"
-                style={{ color: 'var(--mf-ink)', borderColor: 'var(--mf-mist)' }}
+                className="py-3 px-2 font-bold text-base border-b"
+                style={{ color: 'var(--mf-espresso)', borderColor: 'var(--mf-mist)' }}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
             <div className="mt-3 grid grid-cols-2 gap-2">
-              {shopCategories.slice(0, 6).map((cat) => (
+              {shopCategories.map((cat) => (
                 <Link
                   key={cat.href}
                   href={cat.href}
-                  className="py-2 px-3 rounded-lg text-sm font-medium"
-                  style={{ backgroundColor: 'var(--mf-mist)', color: 'var(--mf-graphite)' }}
+                  className="py-2 px-3 rounded-xl text-sm font-semibold"
+                  style={{ backgroundColor: 'var(--mf-mist)', color: 'var(--mf-espresso)' }}
                   onClick={() => setMobileOpen(false)}
                 >
                   {cat.label}

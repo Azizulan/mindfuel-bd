@@ -31,16 +31,16 @@ export default function Footer() {
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '8801XXXXXXXXX';
 
   return (
-    <footer style={{ backgroundColor: 'var(--mf-cobalt-deep)', color: 'var(--mf-mint-soft)' }}>
+    <footer
+      className="overflow-hidden rounded-b-[1.75rem] md:rounded-b-[2.25rem]"
+      style={{ backgroundColor: 'var(--mf-espresso)', color: 'var(--mf-cream)' }}
+    >
       {/* Email capture band */}
-      <div
-        className="py-12"
-        style={{ backgroundColor: 'var(--mf-cobalt)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
-      >
+      <div className="py-12" style={{ backgroundColor: 'var(--mf-brown)' }}>
         <div className="container-mf">
           <div className="max-w-xl mx-auto text-center">
-            <h3 className="text-h3 text-white mb-2">Get 10% off your first order</h3>
-            <p className="text-sm mb-6" style={{ color: 'var(--mf-mint-soft)', opacity: 0.85 }}>
+            <h3 className="font-display text-3xl text-white mb-2">Get 10% off your first order</h3>
+            <p className="text-sm mb-6" style={{ color: 'var(--mf-cream)', opacity: 0.8 }}>
               Weekly real-food tips + exclusive deals for MINDFUEL insiders.
             </p>
             <form
@@ -58,7 +58,7 @@ export default function Footer() {
                 required
                 autoComplete="email"
                 placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-full text-sm bg-white text-gray-900"
+                className="flex-1 px-5 py-3 rounded-full text-sm bg-white text-gray-900"
               />
               <button type="submit" className="btn-primary shrink-0">
                 Get 10% Off →
@@ -76,20 +76,18 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
-                <span className="font-extrabold text-sm" style={{ color: 'var(--mf-cobalt)' }}>MF</span>
-              </div>
-              <span className="font-extrabold text-lg text-white">MINDFUEL</span>
+            <div className="flex items-center gap-1 mb-4">
+              <span className="font-display text-2xl text-white">MINDFUEL</span>
+              <span className="w-2 h-2 rounded-full mb-1" style={{ backgroundColor: 'var(--mf-yellow)' }} />
             </div>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--mf-mint-soft)', opacity: 0.7 }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--mf-cream)', opacity: 0.7 }}>
               Bangladesh&apos;s trusted real-food brand. No palm oil. No added sugar. BCSIR lab tested.
             </p>
             <a
               href={`https://wa.me/${waNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold transition-transform hover:scale-105"
               style={{ backgroundColor: '#25D366', color: 'white' }}
             >
               <MessageCircle size={16} />
@@ -100,14 +98,14 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-label text-white mb-4">{category}</h4>
+              <h4 className="text-label mb-4" style={{ color: 'var(--mf-yellow)' }}>{category}</h4>
               <ul className="flex flex-col gap-2.5">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       className="text-sm hover:text-white transition-colors"
-                      style={{ color: 'var(--mf-mint-soft)', opacity: 0.7 } as React.CSSProperties}
+                      style={{ color: 'var(--mf-cream)', opacity: 0.7 }}
                     >
                       {link.label}
                     </Link>
@@ -121,7 +119,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
+          style={{ borderTop: '1px solid rgba(255,255,255,0.12)' }}
         >
           <p className="text-xs opacity-50">
             © 2026 MINDFUEL. Made with care in Bangladesh. All rights reserved.

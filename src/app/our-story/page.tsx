@@ -59,9 +59,7 @@ export default function OurStoryPage() {
                 borderColor: 'var(--mf-amber)',
                 color: 'var(--mf-ink)',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
-                fontStyle: 'italic',
-                fontWeight: 500,
-                lineHeight: 1.3,
+                lineHeight: 1.2,
               }}
             >
               &ldquo;Bangladesh doesn&apos;t need to import healthy food. We just needed someone to actually make it — properly, transparently, here.&rdquo;

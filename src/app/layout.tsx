@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Manrope, Hind_Siliguri, Fraunces } from 'next/font/google';
+import { Manrope, Hind_Siliguri, Lilita_One } from 'next/font/google';
 import './globals.css';
 
 const manrope = Manrope({
@@ -16,11 +16,11 @@ const hindSiliguri = Hind_Siliguri({
   weight: ['400', '500', '600', '700'],
 });
 
-const fraunces = Fraunces({
+const lilitaOne = Lilita_One({
   subsets: ['latin'],
-  variable: '--font-fraunces',
+  variable: '--font-lilita',
   display: 'swap',
-  axes: ['SOFT', 'opsz'],
+  weight: '400',
 });
 
 export const metadata: Metadata = {
@@ -60,9 +60,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${hindSiliguri.variable} ${fraunces.variable}`}
+      className={`${manrope.variable} ${hindSiliguri.variable} ${lilitaOne.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-white text-mf-ink antialiased">
+      <body className="min-h-screen text-mf-ink antialiased" style={{ backgroundColor: 'var(--mf-espresso)' }}>
         {children}
       </body>
     </html>

@@ -1,42 +1,58 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors */
-  --color-mf-cobalt: #1E3A8A;
-  --color-mf-cobalt-deep: #172554;
-  --color-mf-mint: #5EEAD4;
-  --color-mf-mint-soft: #CCFBF1;
-  --color-mf-amber: #F59E0B;
-  --color-mf-amber-soft: #FEF3C7;
+  /* === Bakery palette mapped onto existing brand tokens === */
+  /* Primary = chocolate brown (was cobalt) */
+  --color-mf-cobalt: #4A3122;
+  --color-mf-cobalt-deep: #2E1F15;
+  /* Secondary accent = soft sky blue (was mint) */
+  --color-mf-mint: #9FD3DF;
+  --color-mf-mint-soft: #D9EEF2;
+  /* CTA = golden yellow (was amber) */
+  --color-mf-amber: #F7C948;
+  --color-mf-amber-soft: #FCE5A6;
 
   /* Neutrals */
   --color-mf-white: #FFFFFF;
-  --color-mf-cream: #FAF7F2;
-  --color-mf-ink: #0F172A;
-  --color-mf-graphite: #334155;
-  --color-mf-mist: #E2E8F0;
+  --color-mf-cream: #FBF5E9;
+  --color-mf-ink: #3A2817;
+  --color-mf-graphite: #6F5942;
+  --color-mf-mist: #EADBC4;
 
   /* Semantic */
-  --color-mf-success: #10B981;
-  --color-mf-warn: #F59E0B;
-  --color-mf-danger: #EF4444;
+  --color-mf-success: #6FA046;
+  --color-mf-warn: #E0813F;
+  --color-mf-danger: #D9533B;
+
+  /* Extra bakery tokens */
+  --color-mf-espresso: #2E1F15;
+  --color-mf-brown: #4A3122;
+  --color-mf-yellow: #F7C948;
+  --color-mf-orange: #E0813F;
+  --color-mf-orange-soft: #F6D6B8;
+  --color-mf-blue: #9FD3DF;
+  --color-mf-blue-soft: #D9EEF2;
+  --color-mf-green: #6FA046;
+  --color-mf-green-soft: #DCEBC6;
+  --color-mf-purple: #5E43B0;
 
   /* Fonts */
   --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-display: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
   --font-bn: 'Hind Siliguri', sans-serif;
 
   /* Spacing */
   --spacing-section: 5rem;
   --spacing-section-mobile: 3rem;
 
-  /* Border radius */
-  --radius-card: 0.75rem;
-  --radius-input: 0.5rem;
+  /* Border radius — bakery = very rounded */
+  --radius-card: 1.5rem;
+  --radius-input: 0.75rem;
   --radius-pill: 9999px;
 
   /* Shadows */
-  --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.06);
-  --shadow-card-hover: 0 8px 24px rgba(15, 23, 42, 0.1);
+  --shadow-card: 0 6px 20px rgba(46, 31, 21, 0.08);
+  --shadow-card-hover: 0 12px 32px rgba(46, 31, 21, 0.14);
 }
 
 /* Accessibility — focus + motion */
@@ -45,20 +61,20 @@
 }
 
 *:focus-visible {
-  outline: 3px solid var(--mf-amber);
+  outline: 3px solid var(--mf-orange);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid var(--mf-amber);
+  outline: 3px solid var(--mf-orange);
   outline-offset: 3px;
 }
 
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--mf-cobalt);
+  outline: 2px solid var(--mf-brown);
   outline-offset: 1px;
 }
 
@@ -85,20 +101,33 @@ textarea:focus-visible {
 
 @layer base {
   :root {
-    --mf-cobalt: #1E3A8A;
-    --mf-cobalt-deep: #172554;
-    --mf-mint: #5EEAD4;
-    --mf-mint-soft: #CCFBF1;
-    --mf-amber: #F59E0B;
-    --mf-amber-soft: #FEF3C7;
+    --mf-cobalt: #4A3122;
+    --mf-cobalt-deep: #2E1F15;
+    --mf-mint: #9FD3DF;
+    --mf-mint-soft: #D9EEF2;
+    --mf-amber: #F7C948;
+    --mf-amber-soft: #FCE5A6;
     --mf-white: #FFFFFF;
-    --mf-cream: #FAF7F2;
-    --mf-ink: #0F172A;
-    --mf-graphite: #334155;
-    --mf-mist: #E2E8F0;
-    --mf-success: #10B981;
-    --mf-warn: #F59E0B;
-    --mf-danger: #EF4444;
+    --mf-cream: #FBF5E9;
+    --mf-ink: #3A2817;
+    --mf-graphite: #6F5942;
+    --mf-mist: #EADBC4;
+    --mf-success: #6FA046;
+    --mf-warn: #E0813F;
+    --mf-danger: #D9533B;
+
+    /* Bakery extras */
+    --mf-espresso: #2E1F15;
+    --mf-brown: #4A3122;
+    --mf-yellow: #F7C948;
+    --mf-yellow-dark: #E9B021;
+    --mf-orange: #E0813F;
+    --mf-orange-soft: #F6D6B8;
+    --mf-blue: #9FD3DF;
+    --mf-blue-soft: #D9EEF2;
+    --mf-green: #6FA046;
+    --mf-green-soft: #DCEBC6;
+    --mf-purple: #5E43B0;
   }
 
   html {
@@ -106,7 +135,7 @@ textarea:focus-visible {
   }
 
   body {
-    background-color: var(--mf-white);
+    background-color: var(--mf-espresso);
     color: var(--mf-ink);
     font-family: 'Manrope', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -126,38 +155,56 @@ textarea:focus-visible {
     font-family: 'Hind Siliguri', sans-serif;
   }
 
+  /* Chunky bakery display font */
+  .font-display {
+    font-family: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 0.98;
+  }
+
+  /* Re-point existing display class to the bakery font */
+  .font-serif-display {
+    font-family: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
   .text-display-xl {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    font-family: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+    font-size: clamp(2.75rem, 6vw, 4.75rem);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    line-height: 0.95;
   }
 
   .text-display-l {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-family: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    line-height: 1;
   }
 
   .text-h2 {
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 700;
+    font-family: var(--font-lilita), 'Lilita One', system-ui, sans-serif;
+    font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+  }
+
+  .text-h3 {
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 800;
     letter-spacing: -0.01em;
     line-height: 1.2;
   }
 
-  .text-h3 {
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
-    font-weight: 700;
-    letter-spacing: -0.005em;
-    line-height: 1.25;
-  }
-
   .text-label {
     font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
@@ -183,34 +230,65 @@ textarea:focus-visible {
   }
 
   .card-shadow {
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 6px 20px rgba(46, 31, 21, 0.08);
   }
 
   .card-shadow-hover {
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+    box-shadow: 0 12px 32px rgba(46, 31, 21, 0.14);
   }
 
+  /* === Outer bakery frame === */
+  .site-frame {
+    background-color: var(--mf-espresso);
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .site-frame {
+      padding: 0.75rem;
+    }
+  }
+
+  .site-card {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--mf-cream);
+    border-radius: 1.75rem;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .site-card {
+      border-radius: 2.25rem;
+    }
+  }
+
+  /* Buttons — yellow pill */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background-color: var(--mf-amber);
-    color: var(--mf-cobalt-deep);
-    font-weight: 700;
+    background-color: var(--mf-yellow);
+    color: var(--mf-espresso);
+    font-weight: 800;
     font-size: 0.9375rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 9999px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.15s ease, transform 0.1s ease;
+    transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
     text-decoration: none;
     white-space: nowrap;
   }
 
   .btn-primary:hover {
-    background-color: #D97706;
+    background-color: var(--mf-yellow-dark);
     transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(233, 176, 33, 0.4);
   }
 
   .btn-primary:active {
@@ -223,12 +301,12 @@ textarea:focus-visible {
     justify-content: center;
     gap: 0.5rem;
     background-color: transparent;
-    color: var(--mf-cobalt);
-    font-weight: 700;
+    color: var(--mf-brown);
+    font-weight: 800;
     font-size: 0.9375rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 9999px;
-    border: 2px solid var(--mf-cobalt);
+    border: 2px solid var(--mf-brown);
     cursor: pointer;
     transition: all 0.15s ease;
     text-decoration: none;
@@ -236,34 +314,46 @@ textarea:focus-visible {
   }
 
   .btn-secondary:hover {
-    background-color: var(--mf-cobalt);
-    color: var(--mf-white);
+    background-color: var(--mf-brown);
+    color: var(--mf-cream);
   }
 
+  /* Badges — playful pills */
   .badge {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.25rem 0.625rem;
+    padding: 0.25rem 0.7rem;
     border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .badge-mint {
-    background-color: var(--mf-mint-soft);
-    color: #0F766E;
+    background-color: var(--mf-blue);
+    color: #1C4A54;
   }
 
   .badge-amber {
-    background-color: var(--mf-amber-soft);
-    color: #92400E;
+    background-color: var(--mf-yellow);
+    color: var(--mf-espresso);
   }
 
   .badge-cobalt {
-    background-color: #DBEAFE;
-    color: var(--mf-cobalt);
+    background-color: var(--mf-brown);
+    color: var(--mf-cream);
+  }
+
+  .badge-green {
+    background-color: var(--mf-green);
+    color: #FFFFFF;
+  }
+
+  .badge-orange {
+    background-color: var(--mf-orange);
+    color: #FFFFFF;
   }
 
   .horizontal-scroll {
@@ -286,7 +376,7 @@ textarea:focus-visible {
   }
 
   .skeleton {
-    background: linear-gradient(90deg, #E2E8F0 0%, #F1F5F9 50%, #E2E8F0 100%);
+    background: linear-gradient(90deg, #EADBC4 0%, #F5E9D4 50%, #EADBC4 100%);
     background-size: 200% 100%;
     animation: shimmer 1.4s ease-in-out infinite;
   }
@@ -301,12 +391,5 @@ textarea:focus-visible {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-  }
-
-  .font-serif-display {
-    font-family: var(--font-fraunces), 'Fraunces', Georgia, serif;
-    font-feature-settings: 'ss01', 'ss02';
-    font-variation-settings: 'SOFT' 50, 'WONK' 0, 'opsz' 144;
-    letter-spacing: -0.02em;
   }
 }

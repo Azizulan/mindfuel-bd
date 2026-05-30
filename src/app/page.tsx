@@ -1,39 +1,35 @@
 import SiteLayout from '@/components/layout/SiteLayout';
 import HomepageHero from '@/components/home/HomepageHero';
-import SeasonalBand from '@/components/home/SeasonalBand';
-import CategoryTiles from '@/components/home/CategoryTiles';
-import WhyMINDFUEL from '@/components/home/WhyMINDFUEL';
-import FeaturedProduct from '@/components/home/FeaturedProduct';
+import FeaturedDelight from '@/components/home/FeaturedDelight';
+import ProductsDaily from '@/components/home/ProductsDaily';
+import ArtFormFeature from '@/components/home/ArtFormFeature';
+import WhySpecial from '@/components/home/WhySpecial';
 import VillainTeaser from '@/components/home/VillainTeaser';
-import { getProductBySlug, getFeaturedProducts } from '@/data/products';
-import { currentSeason } from '@/data/seasonal';
+import StatsBand from '@/components/home/StatsBand';
 
 export default function HomePage() {
-  const seasonalProduct = getProductBySlug(currentSeason.heroProductSlug);
-  const featuredProducts = getFeaturedProducts();
-  const heroProduct = seasonalProduct ?? featuredProducts[0];
-
   return (
     <SiteLayout>
-      {/* §6.2 Hero */}
+      {/* Hero — chunky bakery headline + product on yellow card */}
       <HomepageHero />
 
-      {/* §6.3 Seasonal band */}
-      <SeasonalBand />
+      {/* Your only dose of delight — featured item */}
+      <FeaturedDelight />
 
-      {/* §6.4 Category tiles */}
-      <CategoryTiles />
+      {/* Real food we make daily — category pills + carousel */}
+      <ProductsDaily />
 
-      {/* §6.5 Why MINDFUEL exists */}
-      <WhyMINDFUEL />
+      {/* Why real food is worth the effort — dark feature */}
+      <ArtFormFeature />
 
-      {/* §6.6 Featured product */}
-      {heroProduct && <FeaturedProduct product={heroProduct} />}
+      {/* Why MINDFUEL is special — showcase + testimonial */}
+      <WhySpecial />
 
-      {/* §6.7 Real vs Fake teaser */}
+      {/* Real vs Fake teaser */}
       <VillainTeaser />
 
-      {/* §6.11 Email capture — handled in Footer */}
+      {/* Stats band — rating + tags */}
+      <StatsBand />
     </SiteLayout>
   );
 }
