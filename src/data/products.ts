@@ -5,6 +5,9 @@ export const products: Product[] = [
     slug: 'classic-peanut-butter-smooth',
     name: { en: 'Classic Peanut Butter — Smooth', bn: 'ক্লাসিক পিনাট বাটার — স্মুদ' },
     category: 'peanut-butter',
+    flavorGroup: 'peanut-butter',
+    flavorName: { en: 'Classic Smooth', bn: 'ক্লাসিক স্মুদ' },
+    flavorColor: '#C8915C',
     tagline: {
       en: '26g protein. No palm oil. No added sugar.',
       bn: '২৬গ্রাম প্রোটিন। কোনো পাম অয়েল নেই। বাড়তি চিনি নেই।',
@@ -18,9 +21,9 @@ export const products: Product[] = [
       bn: 'আমাদের ক্লাসিক স্মুদ পিনাট বাটার সেরা বাংলাদেশি চিনাবাদাম দিয়ে তৈরি, ড্রাই রোস্ট করে প্রাকৃতিক গভীর স্বাদ আনা হয়। পুরোপুরি মসৃণ ক্রিমি বাটারে গ্রাইন্ড করা হয় — কোনো পাম অয়েল, হাইড্রোজেনেটেড ফ্যাট, বাড়তি চিনি বা প্রিজার্ভেটিভ নেই। শুধু চিনাবাদাম, সামান্য লবণ, আর MINDFUEL-এর আসল খাবারের প্রতিশ্রুতি।',
     },
     variants: [
-      { sku: 'CPB-S-200', label: { en: 'Smooth 200g', bn: 'স্মুদ ২০০গ্রাম' }, size: '200g', price: 290, comparePrice: 320, inStock: true },
-      { sku: 'CPB-S-400', label: { en: 'Smooth 400g', bn: 'স্মুদ ৪০০গ্রাম' }, size: '400g', price: 520, comparePrice: 580, inStock: true },
-      { sku: 'CPB-S-1KG', label: { en: 'Smooth 1kg', bn: 'স্মুদ ১কেজি' }, size: '1kg', price: 1100, comparePrice: 1250, inStock: true },
+      { sku: 'CPB-S-250', label: { en: '250g Jar', bn: '২৫০গ্রাম জার' }, size: '250g', price: 350, comparePrice: 400, inStock: true },
+      { sku: 'CPB-S-500', label: { en: '500g Jar', bn: '৫০০গ্রাম জার' }, size: '500g', price: 640, comparePrice: 720, inStock: true },
+      { sku: 'CPB-S-1KG', label: { en: '1kg Jar', bn: '১কেজি জার' }, size: '1kg', price: 1190, comparePrice: 1350, inStock: true },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2025/01/5N-Web.webp',
     galleryImages: [
@@ -90,6 +93,9 @@ export const products: Product[] = [
     slug: 'classic-peanut-butter-crunchy',
     name: { en: 'Classic Peanut Butter — Crunchy', bn: 'ক্লাসিক পিনাট বাটার — ক্রাঞ্চি' },
     category: 'peanut-butter',
+    flavorGroup: 'peanut-butter',
+    flavorName: { en: 'Classic Crunchy', bn: 'ক্লাসিক ক্রাঞ্চি' },
+    flavorColor: '#A9743B',
     tagline: {
       en: '26g protein. Real crunch. Zero junk.',
       bn: '২৬গ্রাম প্রোটিন। আসল ক্রাঞ্চ। কোনো জাংক নেই।',
@@ -103,9 +109,9 @@ export const products: Product[] = [
       bn: 'যারা টেক্সচার পছন্দ করেন তাদের জন্য। আমাদের ক্রাঞ্চি পিনাট বাটার স্মুথ গ্রাউন্ড চিনাবাদামের সাথে পুরো রোস্টেড চিনাবাদামের টুকরো মিশিয়ে প্রতিটি কামড়ে সত্যিকারের ক্রাঞ্চ দেয়।',
     },
     variants: [
-      { sku: 'CPB-C-200', label: { en: 'Crunchy 200g', bn: 'ক্রাঞ্চি ২০০গ্রাম' }, size: '200g', price: 290, comparePrice: 320, inStock: true },
-      { sku: 'CPB-C-400', label: { en: 'Crunchy 400g', bn: 'ক্রাঞ্চি ৪০০গ্রাম' }, size: '400g', price: 520, comparePrice: 580, inStock: true },
-      { sku: 'CPB-C-1KG', label: { en: 'Crunchy 1kg', bn: 'ক্রাঞ্চি ১কেজি' }, size: '1kg', price: 1100, comparePrice: 1250, inStock: false },
+      { sku: 'CPB-C-250', label: { en: '250g Jar', bn: '২৫০গ্রাম জার' }, size: '250g', price: 350, comparePrice: 400, inStock: true },
+      { sku: 'CPB-C-500', label: { en: '500g Jar', bn: '৫০০গ্রাম জার' }, size: '500g', price: 640, comparePrice: 720, inStock: true },
+      { sku: 'CPB-C-1KG', label: { en: '1kg Jar', bn: '১কেজি জার' }, size: '1kg', price: 1190, comparePrice: 1350, inStock: false },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2025/01/5N-Web.webp',
     galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2025/01/5N-Web-600x600.webp'],
@@ -161,6 +167,9 @@ export const products: Product[] = [
     slug: 'chocolate-peanut-butter',
     name: { en: 'Chocolate Peanut Butter', bn: 'চকলেট পিনাট বাটার' },
     category: 'peanut-butter',
+    flavorGroup: 'peanut-butter',
+    flavorName: { en: 'Chocolate', bn: 'চকলেট' },
+    flavorColor: '#5A3A24',
     tagline: {
       en: 'Guilt-free chocolate. 24g protein. No palm oil.',
       bn: 'গিল্ট-ফ্রি চকলেট। ২৪গ্রাম প্রোটিন। কোনো পাম অয়েল নেই।',
@@ -174,8 +183,8 @@ export const products: Product[] = [
       bn: 'আসল বাংলাদেশি চিনাবাদাম, আসল কোকো পাউডার, সামান্য নারকেল চিনি — ব্যস এটুকুই। কোনো পাম অয়েল, হাইড্রোজেনেটেড ফ্যাট, কৃত্রিম ফ্লেভার নেই। আমাদের চকলেট পিনাট বাটার সেই মানুষদের জন্য তৈরি যারা মিষ্টি-স্তরের স্বাদ চান কিন্তু আসল খাবারের পরিচয় সহ।',
     },
     variants: [
-      { sku: 'CHPB-200', label: { en: 'Chocolate PB 200g', bn: 'চকলেট পিবি ২০০গ্রাম' }, size: '200g', price: 320, comparePrice: 360, inStock: true },
-      { sku: 'CHPB-400', label: { en: 'Chocolate PB 400g', bn: 'চকলেট পিবি ৪০০গ্রাম' }, size: '400g', price: 580, comparePrice: 650, inStock: true },
+      { sku: 'CHPB-250', label: { en: '250g Jar', bn: '২৫০গ্রাম জার' }, size: '250g', price: 390, comparePrice: 440, inStock: true },
+      { sku: 'CHPB-500', label: { en: '500g Jar', bn: '৫০০গ্রাম জার' }, size: '500g', price: 720, comparePrice: 820, inStock: true },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2025/01/5C-Web-1.webp',
     galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2025/01/5C-Web-1-600x600.webp'],
@@ -231,6 +240,9 @@ export const products: Product[] = [
     slug: 'granola-honey-nut',
     name: { en: 'Granola — Honey Nut', bn: 'গ্র্যানোলা — হানি নাট' },
     category: 'granola',
+    flavorGroup: 'granola',
+    flavorName: { en: 'Honey Nut', bn: 'হানি নাট' },
+    flavorColor: '#E0A23F',
     tagline: {
       en: 'Slow-baked. Real honey. 6g protein per serve.',
       bn: 'স্লো-বেকড। আসল মধু। প্রতি সার্ভিংয়ে ৬গ্রাম প্রোটিন।',
@@ -244,8 +256,8 @@ export const products: Product[] = [
       bn: 'আমাদের হানি নাট গ্র্যানোলা রোলড হোল ওটস দিয়ে তৈরি, আসল বাংলাদেশি বুনো ফুলের মধু এবং মিশ্র রোস্টেড বাদামের সাথে টোস্ট করা হয়েছে। কোনো পরিশোধিত চিনি, পাম অয়েল, কৃত্রিম ফ্লেভার নেই।',
     },
     variants: [
-      { sku: 'GHN-350', label: { en: 'Honey Nut 350g', bn: 'হানি নাট ৩৫০গ্রাম' }, size: '350g', price: 390, comparePrice: 440, inStock: true },
-      { sku: 'GHN-700', label: { en: 'Honey Nut 700g', bn: 'হানি নাট ৭০০গ্রাম' }, size: '700g', price: 720, comparePrice: 820, inStock: true },
+      { sku: 'GHN-350', label: { en: '350g Pack', bn: '৩৫০গ্রাম প্যাক' }, size: '350g', price: 390, comparePrice: 440, inStock: true },
+      { sku: 'GHN-700', label: { en: '700g Pack', bn: '৭০০গ্রাম প্যাক' }, size: '700g', price: 720, comparePrice: 820, inStock: true },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2026/03/qzyikblco6unb73zburg.webp',
     galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2026/03/qzyikblco6unb73zburg-600x600.webp'],
@@ -297,6 +309,9 @@ export const products: Product[] = [
     slug: 'granola-berry',
     name: { en: 'Granola — Berry', bn: 'গ্র্যানোলা — বেরি' },
     category: 'granola',
+    flavorGroup: 'granola',
+    flavorName: { en: 'Berry', bn: 'বেরি' },
+    flavorColor: '#C24D6B',
     tagline: {
       en: 'Tart, sweet, real — no artificial colours.',
       bn: 'টার্ট, মিষ্টি, আসল — কোনো কৃত্রিম রঙ নেই।',
@@ -310,8 +325,8 @@ export const products: Product[] = [
       bn: 'ফুড ডাই ছাড়া প্রাণবন্ত। আমাদের বেরি গ্র্যানোলা নারকেল চিনি দিয়ে বেক করা হোল রোলড ওটস এবং আসল শুকানো ক্র্যানবেরি, কিশমিশ এবং ব্লুবেরি-ফ্লেভার্ড কারেন্ট দিয়ে ভরপুর।',
     },
     variants: [
-      { sku: 'GB-350', label: { en: 'Berry 350g', bn: 'বেরি ৩৫০গ্রাম' }, size: '350g', price: 380, comparePrice: 430, inStock: true },
-      { sku: 'GB-700', label: { en: 'Berry 700g', bn: 'বেরি ৭০০গ্রাম' }, size: '700g', price: 700, comparePrice: 800, inStock: true },
+      { sku: 'GB-350', label: { en: '350g Pack', bn: '৩৫০গ্রাম প্যাক' }, size: '350g', price: 380, comparePrice: 430, inStock: true },
+      { sku: 'GB-700', label: { en: '700g Pack', bn: '৭০০গ্রাম প্যাক' }, size: '700g', price: 700, comparePrice: 800, inStock: true },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2026/03/qzyikblco6unb73zburg.webp',
     galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2026/03/qzyikblco6unb73zburg-600x600.webp'],
@@ -358,6 +373,9 @@ export const products: Product[] = [
     slug: 'muesli-classic',
     name: { en: 'Muesli — Classic', bn: 'মুয়েসলি — ক্লাসিক' },
     category: 'muesli',
+    flavorGroup: 'muesli',
+    flavorName: { en: 'Classic', bn: 'ক্লাসিক' },
+    flavorColor: '#CBB081',
     tagline: {
       en: 'Untoasted. Whole grain. Eat hot or cold.',
       bn: 'আনটোস্টেড। হোল গ্রেইন। গরম বা ঠান্ডায় খান।',
@@ -371,8 +389,8 @@ export const products: Product[] = [
       bn: 'মুয়েসলি হলো গ্র্যানোলার আরও গুরুত্বপূর্ণ, কম মিষ্টি ভাই-বোন। আমাদের ক্লাসিক মুয়েসলি হলো রোলড ওটস, গমের ফ্লেক্স, রাই ফ্লেক্স, সূর্যমুখী বীজ, কুমড়ার বীজ, কাঠবাদাম এবং শুকানো ফলের মিশ্রণ।',
     },
     variants: [
-      { sku: 'MC-400', label: { en: 'Classic 400g', bn: 'ক্লাসিক ৪০০গ্রাম' }, size: '400g', price: 350, comparePrice: 400, inStock: true },
-      { sku: 'MC-750', label: { en: 'Classic 750g', bn: 'ক্লাসিক ৭৫০গ্রাম' }, size: '750g', price: 620, comparePrice: 700, inStock: true },
+      { sku: 'MC-400', label: { en: '400g Pack', bn: '৪০০গ্রাম প্যাক' }, size: '400g', price: 350, comparePrice: 400, inStock: true },
+      { sku: 'MC-750', label: { en: '750g Pack', bn: '৭৫০গ্রাম প্যাক' }, size: '750g', price: 620, comparePrice: 700, inStock: true },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2026/03/tv1fsxolydl15yqzzp3z.webp',
     galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2026/03/tv1fsxolydl15yqzzp3z-600x600.webp'],
@@ -419,6 +437,9 @@ export const products: Product[] = [
     slug: 'muesli-fruit-nut',
     name: { en: 'Muesli — Fruit & Nut', bn: 'মুয়েসলি — ফ্রুট ও নাট' },
     category: 'muesli',
+    flavorGroup: 'muesli',
+    flavorName: { en: 'Fruit & Nut', bn: 'ফ্রুট ও নাট' },
+    flavorColor: '#E0813F',
     tagline: {
       en: 'More fruit. More nuts. Still no added sugar.',
       bn: 'বেশি ফল। বেশি বাদাম। তবুও বাড়তি চিনি নেই।',
@@ -432,8 +453,8 @@ export const products: Product[] = [
       bn: 'ক্লাসিক মুয়েসলির চেয়ে সমৃদ্ধ — আমাদের ফ্রুট ও নাট ভেরিয়েন্ট হোল গ্রেইন ওটসের সাথে শুকানো আম, পেঁপে এবং আনারস এবং কাজু ও আখরোট যোগ করে।',
     },
     variants: [
-      { sku: 'MFN-400', label: { en: 'Fruit & Nut 400g', bn: 'ফ্রুট ও নাট ৪০০গ্রাম' }, size: '400g', price: 390, comparePrice: 440, inStock: true },
-      { sku: 'MFN-750', label: { en: 'Fruit & Nut 750g', bn: 'ফ্রুট ও নাট ৭৫০গ্রাম' }, size: '750g', price: 690, comparePrice: 780, inStock: true },
+      { sku: 'MFN-400', label: { en: '400g Pack', bn: '৪০০গ্রাম প্যাক' }, size: '400g', price: 390, comparePrice: 440, inStock: true },
+      { sku: 'MFN-750', label: { en: '750g Pack', bn: '৭৫০গ্রাম প্যাক' }, size: '750g', price: 690, comparePrice: 780, inStock: true },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2026/03/tv1fsxolydl15yqzzp3z.webp',
     galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2026/03/tv1fsxolydl15yqzzp3z-600x600.webp'],
@@ -663,6 +684,9 @@ export const products: Product[] = [
     slug: 'seedra',
     name: { en: 'Seedra — Functional Fiber Drink', bn: 'সিড্‌রা — ফাংশনাল ফাইবার ড্রিংক' },
     category: 'functional-drink',
+    flavorGroup: 'seedra',
+    flavorName: { en: 'Original', bn: 'অরিজিনাল' },
+    flavorColor: '#6FA0C0',
     tagline: {
       en: '8g fiber per scoop. Real gut relief — without the weird taste.',
       bn: 'প্রতি স্কুপে ৮গ্রাম ফাইবার। আসল হজমের সমাধান — অদ্ভুত স্বাদ ছাড়াই।',
@@ -676,9 +700,8 @@ export const products: Product[] = [
       bn: 'বাংলাদেশে ফাইবারের ঘাটতি আছে। বেশিরভাগ প্রাপ্তবয়স্ক প্রস্তাবিত দৈনিক ফাইবারের অর্ধেকেরও কম পান। সিড্‌রা ৩০ সেকেন্ডে সেই ঘাটতি পূরণ করে।',
     },
     variants: [
-      { sku: 'SDRA-OR-300', label: { en: 'Original 300g (30 servings)', bn: 'অরিজিনাল ৩০০গ্রাম (৩০ সার্ভিং)' }, size: '300g', price: 680, comparePrice: 780, inStock: true },
-      { sku: 'SDRA-LM-300', label: { en: 'Lemon 300g (30 servings)', bn: 'লেমন ৩০০গ্রাম (৩০ সার্ভিং)' }, size: '300g', price: 690, comparePrice: 790, inStock: true },
-      { sku: 'SDRA-MG-300', label: { en: 'Mango 300g (30 servings)', bn: 'ম্যাংগো ৩০০গ্রাম (৩০ সার্ভিং)' }, size: '300g', price: 690, comparePrice: 790, inStock: true },
+      { sku: 'SDRA-OR-300', label: { en: '300g Tub (30 servings)', bn: '৩০০গ্রাম (৩০ সার্ভিং)' }, size: '300g', price: 680, comparePrice: 780, inStock: true },
+      { sku: 'SDRA-OR-500', label: { en: '500g Tub (50 servings)', bn: '৫০০গ্রাম (৫০ সার্ভিং)' }, size: '500g', price: 1050, comparePrice: 1200, inStock: true },
     ],
     heroImage: 'https://mindfuelbd.com/wp-content/uploads/2026/02/Seedra-Web-600x600.webp',
     galleryImages: [
@@ -743,6 +766,102 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 892,
   },
+
+  {
+    slug: 'seedra-lemon',
+    name: { en: 'Seedra — Lemon Fiber Drink', bn: 'সিড্‌রা — লেমন ফাইবার ড্রিংক' },
+    category: 'functional-drink',
+    flavorGroup: 'seedra',
+    flavorName: { en: 'Lemon', bn: 'লেমন' },
+    flavorColor: '#E8C547',
+    tagline: {
+      en: '8g fiber per scoop. Light, fresh citrus — no weird taste.',
+      bn: 'প্রতি স্কুপে ৮গ্রাম ফাইবার। হালকা, তাজা সিট্রাস — অদ্ভুত স্বাদ ছাড়াই।',
+    },
+    shortDescription: {
+      en: 'Seedra Lemon adds a light, natural citrus flavour to the same 8g-fiber psyllium formula. Great first thing in the morning with cold water.',
+      bn: 'সিড্‌রা লেমন একই ৮গ্রাম ফাইবার ফর্মুলায় হালকা, প্রাকৃতিক সিট্রাস স্বাদ যোগ করে। সকালে ঠান্ডা পানির সাথে দারুণ।',
+    },
+    longDescription: {
+      en: 'The same clinically-backed psyllium, chia and flax fibre — now with a light, natural lemon flavour from real fruit powder. No artificial sweeteners. 8g of fibre per scoop. Mix with cold water and drink immediately.',
+      bn: 'একই ক্লিনিক্যালি-প্রমাণিত সাইলিয়াম, চিয়া ও ফ্ল্যাক্স ফাইবার — এখন আসল ফলের গুঁড়া থেকে হালকা, প্রাকৃতিক লেমন স্বাদ সহ। কোনো কৃত্রিম সুইটেনার নেই।',
+    },
+    variants: [
+      { sku: 'SDRA-LM-300', label: { en: '300g Tub (30 servings)', bn: '৩০০গ্রাম (৩০ সার্ভিং)' }, size: '300g', price: 690, comparePrice: 790, inStock: true },
+      { sku: 'SDRA-LM-500', label: { en: '500g Tub (50 servings)', bn: '৫০০গ্রাম (৫০ সার্ভিং)' }, size: '500g', price: 1070, comparePrice: 1220, inStock: true },
+    ],
+    heroImage: 'https://mindfuelbd.com/wp-content/uploads/2026/02/Seedra-Web-600x600.webp',
+    galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2026/02/Fitness-Seedra-600x600.webp'],
+    nutritionFacts: { servingSize: '10g (1 scoop)', calories: 35, protein: 1.5, carbs: 8, fat: 1, fiber: 8, sugar: 0, sodium: 15 },
+    ingredients: {
+      en: ['Psyllium husk (68%)', 'Chia seeds (15%)', 'Ground flaxseed (14%)', 'Natural lemon powder (2%)', 'Sea salt (1%)'],
+      bn: ['সাইলিয়াম হাস্ক (৬৮%)', 'চিয়া বীজ (১৫%)', 'গ্রাউন্ড ফ্ল্যাক্সসিড (১৪%)', 'প্রাকৃতিক লেমন পাউডার (২%)', 'সামুদ্রিক লবণ (১%)'],
+    },
+    allergens: [],
+    keyBenefits: [
+      { icon: 'droplets', label: { en: '8g Fiber per Scoop', bn: 'প্রতি স্কুপে ৮গ্রাম ফাইবার' } },
+      { icon: 'leaf', label: { en: 'Zero Added Sugar', bn: 'কোনো বাড়তি চিনি নেই' } },
+      { icon: 'zap', label: { en: 'Natural Lemon Flavour', bn: 'প্রাকৃতিক লেমন স্বাদ' } },
+      { icon: 'flask', label: { en: 'BCSIR Lab Tested', bn: 'BCSIR পরীক্ষিত' } },
+      { icon: 'factory', label: { en: 'Made in Bangladesh', bn: 'বাংলাদেশে তৈরি' } },
+      { icon: 'shield', label: { en: '100% Money-Back Guarantee', bn: '১০০% মানি-ব্যাক গ্যারান্টি' } },
+    ],
+    comparisonRow: { protein: '15g/100g', addedSugar: false, palmOil: false, preservatives: false, labTested: true, pricePerGram: '৳2.30/g' },
+    faqs: [],
+    crossSellSlugs: ['seed-mix', 'spicy-nut-mix', 'muesli-classic'],
+    badges: [{ label: 'Summer Hero', color: 'amber' }],
+    seasonalTags: ['summer'],
+    rating: 4.8,
+    reviewCount: 311,
+  },
+
+  {
+    slug: 'seedra-mango',
+    name: { en: 'Seedra — Mango Fiber Drink', bn: 'সিড্‌রা — ম্যাংগো ফাইবার ড্রিংক' },
+    category: 'functional-drink',
+    flavorGroup: 'seedra',
+    flavorName: { en: 'Mango', bn: 'ম্যাংগো' },
+    flavorColor: '#E0813F',
+    tagline: {
+      en: '8g fiber per scoop. Warm, tropical mango — summer special.',
+      bn: 'প্রতি স্কুপে ৮গ্রাম ফাইবার। উষ্ণ, ট্রপিক্যাল ম্যাংগো — গ্রীষ্মকালীন বিশেষ।',
+    },
+    shortDescription: {
+      en: 'Seedra Mango brings a warm, tropical fruit flavour to the same 8g-fiber formula. A summer-only seasonal — limited stock.',
+      bn: 'সিড্‌রা ম্যাংগো একই ৮গ্রাম ফাইবার ফর্মুলায় উষ্ণ, ট্রপিক্যাল ফলের স্বাদ আনে। শুধুমাত্র গ্রীষ্মকালীন — সীমিত স্টক।',
+    },
+    longDescription: {
+      en: 'Our summer-only flavour. Same psyllium, chia and flax fibre, now with real mango powder for a warm tropical taste kids and adults both love. 8g of fibre per scoop, zero added sugar.',
+      bn: 'আমাদের শুধুমাত্র গ্রীষ্মকালীন স্বাদ। একই সাইলিয়াম, চিয়া ও ফ্ল্যাক্স ফাইবার, এখন আসল আমের গুঁড়া সহ। প্রতি স্কুপে ৮গ্রাম ফাইবার, কোনো বাড়তি চিনি নেই।',
+    },
+    variants: [
+      { sku: 'SDRA-MG-300', label: { en: '300g Tub (30 servings)', bn: '৩০০গ্রাম (৩০ সার্ভিং)' }, size: '300g', price: 690, comparePrice: 790, inStock: true },
+      { sku: 'SDRA-MG-500', label: { en: '500g Tub (50 servings)', bn: '৫০০গ্রাম (৫০ সার্ভিং)' }, size: '500g', price: 1070, comparePrice: 1220, inStock: false },
+    ],
+    heroImage: 'https://mindfuelbd.com/wp-content/uploads/2026/02/Ramadan-Seedra-600x600.webp',
+    galleryImages: ['https://mindfuelbd.com/wp-content/uploads/2026/02/Seedra-Web-600x600.webp'],
+    nutritionFacts: { servingSize: '10g (1 scoop)', calories: 36, protein: 1.5, carbs: 8.5, fat: 1, fiber: 8, sugar: 0.5, sodium: 15 },
+    ingredients: {
+      en: ['Psyllium husk (68%)', 'Chia seeds (15%)', 'Ground flaxseed (14%)', 'Natural mango powder (2%)', 'Sea salt (1%)'],
+      bn: ['সাইলিয়াম হাস্ক (৬৮%)', 'চিয়া বীজ (১৫%)', 'গ্রাউন্ড ফ্ল্যাক্সসিড (১৪%)', 'প্রাকৃতিক ম্যাংগো পাউডার (২%)', 'সামুদ্রিক লবণ (১%)'],
+    },
+    allergens: [],
+    keyBenefits: [
+      { icon: 'droplets', label: { en: '8g Fiber per Scoop', bn: 'প্রতি স্কুপে ৮গ্রাম ফাইবার' } },
+      { icon: 'leaf', label: { en: 'Zero Added Sugar', bn: 'কোনো বাড়তি চিনি নেই' } },
+      { icon: 'zap', label: { en: 'Real Mango — Kids Love It', bn: 'আসল আম — বাচ্চারা পছন্দ করে' } },
+      { icon: 'flask', label: { en: 'BCSIR Lab Tested', bn: 'BCSIR পরীক্ষিত' } },
+      { icon: 'factory', label: { en: 'Made in Bangladesh', bn: 'বাংলাদেশে তৈরি' } },
+      { icon: 'shield', label: { en: '100% Money-Back Guarantee', bn: '১০০% মানি-ব্যাক গ্যারান্টি' } },
+    ],
+    comparisonRow: { protein: '15g/100g', addedSugar: false, palmOil: false, preservatives: false, labTested: true, pricePerGram: '৳2.30/g' },
+    faqs: [],
+    crossSellSlugs: ['seed-mix', 'spicy-nut-mix', 'muesli-classic'],
+    badges: [{ label: 'Summer Special', color: 'amber' }],
+    seasonalTags: ['summer'],
+    rating: 4.9,
+    reviewCount: 204,
+  },
 ];
 
 export function getProductBySlug(slug: string): Product | undefined {
@@ -761,4 +880,11 @@ export function getFeaturedProducts(): Product[] {
 
 export function getCrossSellProducts(slugs: string[]): Product[] {
   return products.filter((p) => slugs.includes(p.slug));
+}
+
+/** All flavours in the same flavour line (includes the product itself), in catalogue order. */
+export function getFlavorSiblings(product: Product): Product[] {
+  if (!product.flavorGroup) return [];
+  const group = products.filter((p) => p.flavorGroup === product.flavorGroup);
+  return group.length > 1 ? group : [];
 }

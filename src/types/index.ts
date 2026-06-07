@@ -64,6 +64,12 @@ export type Product = {
   slug: string;
   name: BilingualText;
   category: ProductCategory;
+  /** Links sibling flavours so the PDP can show a flavour switcher. */
+  flavorGroup?: string;
+  /** Short flavour label, e.g. "Smooth", "Chocolate", "Lemon". */
+  flavorName?: BilingualText;
+  /** Hex colour for the flavour swatch. */
+  flavorColor?: string;
   tagline: BilingualText;
   shortDescription: BilingualText;
   longDescription: BilingualText;

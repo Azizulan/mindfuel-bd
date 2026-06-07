@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Check, Minus, Plus, RefreshCw, Gift } from 'lucide-react';
+import { Check, Minus, Plus, Truck, Gift } from 'lucide-react';
 import type { Product } from '@/types';
 import { freeGifts } from '@/data/free-gifts';
 import { formatPrice } from '@/lib/utils';
@@ -24,7 +24,6 @@ export default function BuildBox({ product }: Props) {
   const [stackSize, setStackSize] = useState<1 | 3 | 6>(3);
   const [freeGiftId, setFreeGiftId] = useState<string | null>(null);
   const [selected, setSelected] = useState<VariantQty[]>([]);
-  const [isSubscription, setIsSubscription] = useState(false);
   const addItem = useCart((s) => s.addItem);
 
   const totalSelected = selected.reduce((s, v) => s + v.qty, 0);
@@ -45,8 +44,7 @@ export default function BuildBox({ product }: Props) {
 
   const basePrice = product.variants[0].price;
   const stackDiscount = STACK_OPTIONS.find((o) => o.size === stackSize)?.discount ?? 0;
-  const subDiscount = isSubscription ? 10 : 0;
-  const totalDiscount = Math.min(stackDiscount + subDiscount, 35);
+  const totalDiscount = stackDiscount;
   const originalTotal = basePrice * stackSize;
   const discountedTotal = Math.round(originalTotal * (1 - totalDiscount / 100));
   const savedAmount = originalTotal - discountedTotal;
@@ -72,9 +70,9 @@ export default function BuildBox({ product }: Props) {
     <section id="build-box" className="section-py" style={{ backgroundColor: 'var(--mf-cream)' }}>
       <div className="container-mf">
         <div className="text-center mb-8">
-          <span className="text-label" style={{ color: 'var(--mf-cobalt)' }}>BUILD YOUR STACK</span>
-          <h2 className="text-h2 mt-2" style={{ color: 'var(--mf-ink)' }}>
-            The more you stack, the more you save.
+          <span className="text-label" style={{ color: 'var(--mf-orange)' }}>STOCK UP &amp; SAVE</span>
+          <h2 className="text-h2 mt-2" style={{ color: 'var(--mf-espresso)' }}>
+            Build a 3 or 6-pack. Save up to 20%.
           </h2>
         </div>
 
@@ -166,32 +164,15 @@ export default function BuildBox({ product }: Props) {
                 ))}
               </div>
 
-              {/* Subscription toggle */}
+              {/* Free delivery nudge (replaces subscription) */}
               <div
-                className="mt-4 flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer"
-                style={{
-                  borderColor: isSubscription ? 'var(--mf-mint)' : 'var(--mf-mist)',
-                  backgroundColor: isSubscription ? 'var(--mf-mint-soft)' : 'white',
-                }}
-                onClick={() => setIsSubscription(!isSubscription)}
+                className="mt-4 flex items-center gap-3 p-4 rounded-xl"
+                style={{ backgroundColor: 'var(--mf-green-soft)' }}
               >
-                <div className="flex items-center gap-3">
-                  <RefreshCw size={18} style={{ color: isSubscription ? '#0F766E' : 'var(--mf-graphite)' }} />
-                  <div>
-                    <p className="text-sm font-semibold">Subscribe & Save an extra 10%</p>
-                    <p className="text-xs" style={{ color: 'var(--mf-graphite)' }}>+ Free delivery — cancel anytime</p>
-                  </div>
-                </div>
-                <div
-                  className="w-10 h-6 rounded-full flex items-center transition-all"
-                  style={{
-                    backgroundColor: isSubscription ? '#0F766E' : 'var(--mf-mist)',
-                    padding: '2px',
-                    justifyContent: isSubscription ? 'flex-end' : 'flex-start',
-                  }}
-                >
-                  <div className="w-5 h-5 rounded-full bg-white" />
-                </div>
+                <Truck size={18} style={{ color: 'var(--mf-green)' }} />
+                <p className="text-sm font-bold" style={{ color: '#3F5E22' }}>
+                  Bigger packs unlock bigger savings — plus free delivery over ৳1500.
+                </p>
               </div>
             </div>
 
@@ -325,12 +306,6 @@ export default function BuildBox({ product }: Props) {
                   <div className="flex justify-between" style={{ color: 'var(--mf-success)' }}>
                     <span>Bundle discount ({stackDiscount}%)</span>
                     <span>−{formatPrice(Math.round(originalTotal * stackDiscount / 100))}</span>
-                  </div>
-                )}
-                {isSubscription && (
-                  <div className="flex justify-between" style={{ color: 'var(--mf-success)' }}>
-                    <span>Subscribe & Save (10%)</span>
-                    <span>−{formatPrice(Math.round(originalTotal * subDiscount / 100))}</span>
                   </div>
                 )}
               </div>
