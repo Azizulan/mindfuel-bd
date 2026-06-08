@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import SiteLayout from '@/components/layout/SiteLayout';
-import { getProductsByCategory, products } from '@/data/products';
+import { getProductsByCategory } from '@/data/products';
 import Link from 'next/link';
 import { Star } from 'lucide-react';
 import ProductImage from '@/components/ui/ProductImage';
@@ -22,6 +22,8 @@ const categoryLabels: Record<string, string> = {
 
 const validCategories = Object.keys(categoryLabels);
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   return validCategories.map((cat) => ({ category: cat }));
 }
@@ -41,7 +43,7 @@ export default async function CategoryPage({ params }: Props) {
   if (!validCategories.includes(category)) notFound();
 
   const label = categoryLabels[category];
-  const categoryProducts = getProductsByCategory(category as ProductCategory);
+  const categoryProducts = await getProductsByCategory(category as ProductCategory);
 
   return (
     <SiteLayout>

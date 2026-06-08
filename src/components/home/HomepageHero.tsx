@@ -3,8 +3,8 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import ProductImage from '@/components/ui/ProductImage';
 import { getProductBySlug } from '@/data/products';
 
-export default function HomepageHero() {
-  const featured = getProductBySlug('classic-peanut-butter-smooth');
+export default async function HomepageHero() {
+  const featured = await getProductBySlug('classic-peanut-butter-smooth');
 
   return (
     <section className="container-mf pt-6 pb-4">

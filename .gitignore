@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Payload
+/mindfuel.db
+/mindfuel.db-*
+/public/uploads
+src/payload-types.ts

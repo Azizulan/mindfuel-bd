@@ -9,12 +9,13 @@ import { formatPrice, buildWhatsAppMessage } from '@/lib/utils';
 import { trackWhatsAppOrder } from '@/lib/analytics';
 import { FREE_DELIVERY_THRESHOLD } from '@/lib/checkout';
 import ProductImage from '@/components/ui/ProductImage';
-import { getProductBySlug, getCrossSellProducts } from '@/data/products';
+import type { Product } from '@/types';
 
-export default function CartPage() {
+export default function CartClient({ allProducts }: { allProducts: Product[] }) {
   const router = useRouter();
   const { items, removeItem, updateQty, total, itemCount } = useCart();
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '8801XXXXXXXXX';
+  const bySlug = new Map(allProducts.map((p) => [p.slug, p]));
 
   const cartTotal = total();
   const remainingForFreeDelivery = Math.max(0, FREE_DELIVERY_THRESHOLD - cartTotal);
@@ -32,7 +33,7 @@ export default function CartPage() {
 
   /* ---------- Empty state ---------- */
   if (items.length === 0) {
-    const bestseller = getProductBySlug('classic-peanut-butter-smooth');
+    const bestseller = bySlug.get('classic-peanut-butter-smooth');
     return (
       <SiteLayout>
         <div className="section-py">
@@ -79,9 +80,11 @@ export default function CartPage() {
 
   /* ---------- Cross-sell ---------- */
   const inCartSlugs = new Set(items.map((i) => i.productSlug));
-  const crossSell = getCrossSellProducts(
-    [...new Set(items.flatMap((i) => getProductBySlug(i.productSlug)?.crossSellSlugs ?? []))]
-  ).filter((p) => !inCartSlugs.has(p.slug)).slice(0, 4);
+  const crossSellSlugs = [...new Set(items.flatMap((i) => bySlug.get(i.productSlug)?.crossSellSlugs ?? []))];
+  const crossSell = crossSellSlugs
+    .map((s) => bySlug.get(s))
+    .filter((p): p is Product => Boolean(p) && !inCartSlugs.has((p as Product).slug))
+    .slice(0, 4);
 
   return (
     <SiteLayout>

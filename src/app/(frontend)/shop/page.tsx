@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Star } from 'lucide-react';
 import ProductImage from '@/components/ui/ProductImage';
 import SiteLayout from '@/components/layout/SiteLayout';
-import { products } from '@/data/products';
+import { getAllProducts } from '@/data/products';
 import { formatPrice } from '@/lib/utils';
 import type { Product } from '@/types';
 
@@ -20,7 +20,10 @@ export const metadata = {
   description: 'Browse MINDFUEL\'s full range — peanut butter, granola, muesli, nuts, seeds, and Seedra fiber drink. No palm oil. No added sugar. BCSIR lab tested.',
 };
 
-export default function ShopPage() {
+export const revalidate = 60;
+
+export default async function ShopPage() {
+  const products = await getAllProducts();
   return (
     <SiteLayout>
       <div className="section-py">
