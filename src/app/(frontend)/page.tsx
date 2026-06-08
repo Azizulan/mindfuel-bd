@@ -6,8 +6,13 @@ import ArtFormFeature from '@/components/home/ArtFormFeature';
 import WhySpecial from '@/components/home/WhySpecial';
 import VillainTeaser from '@/components/home/VillainTeaser';
 import StatsBand from '@/components/home/StatsBand';
+import { getAllProducts } from '@/data/products';
 
-export default function HomePage() {
+export const revalidate = 60;
+
+export default async function HomePage() {
+  const allProducts = await getAllProducts();
+
   return (
     <SiteLayout>
       {/* Hero — chunky bakery headline + product on yellow card */}
@@ -17,7 +22,7 @@ export default function HomePage() {
       <FeaturedDelight />
 
       {/* Real food we make daily — category pills + carousel */}
-      <ProductsDaily />
+      <ProductsDaily products={allProducts} />
 
       {/* Why real food is worth the effort — dark feature */}
       <ArtFormFeature />

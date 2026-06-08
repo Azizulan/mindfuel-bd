@@ -7,14 +7,14 @@ import { Star, AlertCircle, Check, ShoppingBag } from 'lucide-react';
 import type { Product, Variant } from '@/types';
 import { formatPrice } from '@/lib/utils';
 import { useCart } from '@/store/cart';
-import { getFlavorSiblings } from '@/data/products';
 import { BUY_TIERS, tierUnitPrice } from '@/lib/checkout';
 
 interface Props {
   product: Product;
+  siblings?: Product[];
 }
 
-export default function ProductHero({ product }: Props) {
+export default function ProductHero({ product, siblings = [] }: Props) {
   const [selectedVariant, setSelectedVariant] = useState<Variant>(
     product.variants.find((v) => v.inStock) ?? product.variants[0]
   );
@@ -22,7 +22,6 @@ export default function ProductHero({ product }: Props) {
   const [mainImage, setMainImage] = useState(product.heroImage);
   const addItem = useCart((s) => s.addItem);
 
-  const siblings = getFlavorSiblings(product);
   const activeTier = BUY_TIERS.find((t) => t.qty === tierQty) ?? BUY_TIERS[0];
   const unitPrice = tierUnitPrice(selectedVariant.price, activeTier.off);
   const lineTotal = unitPrice * activeTier.qty;

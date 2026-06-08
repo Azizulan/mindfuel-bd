@@ -2,9 +2,9 @@ import ProductImage from '@/components/ui/ProductImage';
 import { getProductBySlug } from '@/data/products';
 import { formatPrice } from '@/lib/utils';
 
-export default function WhySpecial() {
-  const pb = getProductBySlug('classic-peanut-butter-smooth');
-  const choc = getProductBySlug('chocolate-peanut-butter');
+export default async function WhySpecial() {
+  const pb = await getProductBySlug('classic-peanut-butter-smooth');
+  const choc = await getProductBySlug('chocolate-peanut-butter');
   const cheapest = choc ? [...choc.variants].sort((a, b) => a.price - b.price)[0] : null;
 
   return (

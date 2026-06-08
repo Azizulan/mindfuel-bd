@@ -4,8 +4,8 @@ import ProductImage from '@/components/ui/ProductImage';
 import { getProductBySlug } from '@/data/products';
 import { formatPrice } from '@/lib/utils';
 
-export default function FeaturedDelight() {
-  const product = getProductBySlug('seedra') ?? getProductBySlug('chocolate-peanut-butter');
+export default async function FeaturedDelight() {
+  const product = (await getProductBySlug('seedra')) ?? (await getProductBySlug('chocolate-peanut-butter'));
   if (!product) return null;
   const cheapest = [...product.variants].sort((a, b) => a.price - b.price)[0];
 

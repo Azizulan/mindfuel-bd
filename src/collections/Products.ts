@@ -1,4 +1,18 @@
 import type { CollectionConfig } from 'payload';
+import { revalidatePath } from 'next/cache';
+
+/** Push fresh content to the storefront the moment a product is saved/deleted. */
+function revalidateStorefront(doc: any) {
+  try {
+    revalidatePath('/');
+    revalidatePath('/shop');
+    revalidatePath('/cart');
+    if (doc?.slug) revalidatePath(`/products/${doc.slug}`);
+    if (doc?.category) revalidatePath(`/shop/${doc.category}`);
+  } catch {
+    /* outside request scope (e.g. build) — ISR (revalidate=60) covers it */
+  }
+}
 
 /** Bilingual EN/BN pair as a Payload group. Matches the storefront's { en, bn } shape. */
 const bilingual = (name: string, label: string, textarea = false) => ({
@@ -19,6 +33,10 @@ export const Products: CollectionConfig = {
     group: 'Catalogue',
   },
   access: { read: () => true },
+  hooks: {
+    afterChange: [({ doc }) => { revalidateStorefront(doc); }],
+    afterDelete: [({ doc }) => { revalidateStorefront(doc); }],
+  },
   fields: [
     // A readable title for the admin list (kept in sync from name.en)
     {

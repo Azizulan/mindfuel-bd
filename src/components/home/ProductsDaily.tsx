@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import ProductImage from '@/components/ui/ProductImage';
-import { products } from '@/data/products';
+import type { Product } from '@/types';
 import { formatPrice } from '@/lib/utils';
 
 const categoryPills = [
@@ -18,11 +18,12 @@ const categoryPills = [
 
 const cardBgs = ['var(--mf-orange-soft)', 'var(--mf-blue-soft)', 'var(--mf-amber-soft)', 'var(--mf-green-soft)'];
 
-export default function ProductsDaily() {
+export default function ProductsDaily({ products }: { products: Product[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const featured = products.filter((p) =>
-    ['classic-peanut-butter-smooth', 'granola-honey-nut', 'spicy-nut-mix', 'chocolate-peanut-butter', 'seedra', 'mixed-nuts'].includes(p.slug)
-  );
+  const preferred = ['classic-peanut-butter-smooth', 'granola-honey-nut', 'spicy-nut-mix', 'chocolate-peanut-butter', 'seedra', 'mixed-nuts'];
+  const featured = products
+    .filter((p) => preferred.includes(p.slug))
+    .sort((a, b) => preferred.indexOf(a.slug) - preferred.indexOf(b.slug));
 
   const scroll = (dir: 'left' | 'right') => {
     scrollRef.current?.scrollBy({ left: dir === 'left' ? -320 : 320, behavior: 'smooth' });

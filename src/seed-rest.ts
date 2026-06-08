@@ -3,7 +3,7 @@
    Env:  SEED_URL (default http://localhost:3200), SEED_EMAIL, SEED_PASSWORD */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as productsModule from './data/products';
+import * as productsModule from './data/seed-products';
 
 const BASE = process.env.SEED_URL || 'http://localhost:3200';
 const EMAIL = process.env.SEED_EMAIL || 'admin@mindfuel.bd';

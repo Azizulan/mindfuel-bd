@@ -9,8 +9,8 @@ interface Props {
   crossSellSlugs: string[];
 }
 
-export default function CrossSell({ crossSellSlugs }: Props) {
-  const products = getCrossSellProducts(crossSellSlugs);
+export default async function CrossSell({ crossSellSlugs }: Props) {
+  const products = await getCrossSellProducts(crossSellSlugs);
   if (products.length === 0) return null;
 
   return (

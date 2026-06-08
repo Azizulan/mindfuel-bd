@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getProductBySlug, products } from '@/data/products';
+import { getProductBySlug, getAllProducts, getFlavorSiblings } from '@/data/products';
 import SiteLayout from '@/components/layout/SiteLayout';
 import ProductHero from '@/components/pdp/ProductHero';
 import QuickValueProps from '@/components/pdp/QuickValueProps';
@@ -18,13 +18,16 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
+  const products = await getAllProducts();
   return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
   if (!product) return {};
 
   const cheapest = [...product.variants].sort((a, b) => a.price - b.price)[0];
@@ -47,15 +50,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
 
+  const allProducts = await getAllProducts();
+  const siblings = getFlavorSiblings(allProducts, product);
   const defaultVariant = product.variants.find((v) => v.inStock) ?? product.variants[0];
 
   return (
     <SiteLayout>
       {/* §5.2 Hero */}
-      <ProductHero product={product} />
+      <ProductHero product={product} siblings={siblings} />
 
       {/* §5.3 Quick value props */}
       <QuickValueProps product={product} />

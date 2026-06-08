@@ -3,8 +3,8 @@ import { ArrowRight, Wheat } from 'lucide-react';
 import ProductImage from '@/components/ui/ProductImage';
 import { getProductBySlug } from '@/data/products';
 
-export default function ArtFormFeature() {
-  const product = getProductBySlug('granola-honey-nut');
+export default async function ArtFormFeature() {
+  const product = await getProductBySlug('granola-honey-nut');
 
   return (
     <section className="container-mf py-4">
